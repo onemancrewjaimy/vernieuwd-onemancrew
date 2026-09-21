@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONEMANCREW | Videoproductie voor werving, onboarding en instructie</title>
+  <meta name="description" content="ONEMANCREW maakt wervingsvideo's, instructievideo's en recruitment advertenties die vacatures sneller vullen en onboarding verlichten. Vanuit Limmen, actief in heel Nederland.">
+  <meta name="theme-color" content="#202020">
+  <link rel="canonical" href="https://onemancrew.nl/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ONEMANCREW | Masters of creative thinking">
+  <meta property="og:description" content="Video die vacatures sneller vult, onboarding verlicht en kennis vasthoudt. Ontdek wat ONEMANCREW voor jouw bedrijf kan maken.">
+  <meta property="og:url" content="https://onemancrew.nl/">
+  <meta property="og:image" content="https://onemancrew.nl/assets/img/og-image.jpg">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:site_name" content="ONEMANCREW">
+
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    /* Voorkomt een flits van de pagina vlak voordat de sluiter-overgang
+       "dicht" hem meteen weer bedekt: als we net via een animatie hierheen
+       zijn genavigeerd, dekken we het scherm al af vanaf de allereerste
+       paint, nog voordat main.js draait. */
+    (function () {
+      try {
+        if (sessionStorage.getItem('oc-page-transition') === '1') {
+          document.documentElement.classList.add('oc-transition-pending');
+        }
+      } catch (error) {
+        /* sessionStorage kan onbeschikbaar zijn, dan speelt de overgang
+           gewoon niet af en laadt de pagina normaal. */
+      }
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ONEMANCREW",
+    "description": "ONEMANCREW maakt wervingsvideo's, info- en instructievideo's en recruitment advertenties voor bedrijven in heel Nederland.",
+    "image": "https://onemancrew.nl/assets/img/og-image.jpg",
+    "url": "https://onemancrew.nl/",
+    "telephone": "+31628637074",
+    "email": "contact@onemancrew.nl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Limmen",
+      "addressRegion": "Noord-Holland",
+      "addressCountry": "NL"
+    },
+    "areaServed": "NL",
+    "founder": {
+      "@type": "Person",
+      "name": "Jaimy van der Meer"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/onemancrew",
+      "https://www.instagram.com/onemancrew"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Direct naar inhoud</a>
+
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner container">
+      <a href="index.html" class="site-header__logo">ONEMANCREW</a>
+      <nav class="site-nav" aria-label="Hoofdnavigatie">
+        <ul class="site-nav__list">
+          <li><a href="index.html" class="nav__link" aria-current="page">Home</a></li>
+          <li><a href="over-ons.html" class="nav__link">Over ons</a></li>
+          <li><a href="portfolio.html" class="nav__link">Portfolio</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__actions">
+        <a href="contact.html" class="btn btn--primary btn--sm site-header__cta">Plan een kennismaking</a>
+        <button type="button" class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu openen">
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" data-mobile-menu>
+    <nav aria-label="Mobiele navigatie">
+      <ul class="mobile-menu__list">
+        <li><a href="index.html" class="mobile-menu__link" aria-current="page">Home</a></li>
+        <li><a href="over-ons.html" class="mobile-menu__link">Over ons</a></li>
+        <li><a href="portfolio.html" class="mobile-menu__link">Portfolio</a></li>
+        <li><a href="contact.html" class="mobile-menu__link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__meta">
+      <a href="contact.html" class="btn btn--primary btn--block">Plan een kennismaking</a>
+      <a href="tel:+31628637074" class="mobile-menu__contact"><i data-lucide="phone"></i> +31 6 28637074</a>
+      <a href="mailto:contact@onemancrew.nl" class="mobile-menu__contact"><i data-lucide="mail"></i> contact@onemancrew.nl</a>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__media" data-media-fallback>
+        <!--
+          TODO: vervang deze poster-afbeelding voor een achtergrondvideo, bijvoorbeeld:
+          <video class="hero__video" autoplay muted loop playsinline poster="assets/img/bts/bts-01.jpg">
+            <source src="assets/video/hero.mp4" type="video/mp4">
+          </video>
+          Zolang er geen video is, wordt de BTS-foto hieronder als achtergrond gebruikt.
+          Ontbreekt ook die foto nog, dan valt de sectie terug op een gradient-achtergrond.
+        -->
+        <img src="assets/img/bts/bts-01.jpg" alt="" class="hero__poster" width="1920" height="1080" loading="eager">
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="hero__hud" aria-hidden="true">
+        <span class="rec-tag"><span class="rec-tag__dot"></span>REC</span>
+        <span class="timecode" data-live-timecode>00:00:00:00</span>
+      </div>
+      <div class="container hero__inner">
+        <p class="eyebrow hero__eyebrow">Videoproductie voor bedrijven</p>
+        <h1>Masters of creative thinking.</h1>
+        <p class="hero__subtitle">Vacatures die te lang openstaan en instructies die niemand leest, kosten je tijd en geld. Wij maken video die dat oplost, eenmalig geproduceerd en blijvend inzetbaar.</p>
+        <div class="btn-row hero__actions">
+          <a href="contact.html" class="btn btn--primary">Plan een kennismaking</a>
+          <a href="portfolio.html" class="btn btn--secondary btn--on-dark">Bekijk het werk</a>
+        </div>
+      </div>
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span>Scroll</span>
+        <i data-lucide="chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- HET PROBLEEM -->
+    <section class="section section--light section--glass-ambient" aria-labelledby="probleem-heading">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">De uitdaging</p>
+          <h2 id="probleem-heading">Herkenbaar?</h2>
+          <p class="lede text-muted">Deze drie problemen kosten de meeste bedrijven onnodig veel tijd en geld, en een goed gemaakte video lost ze alle drie op.</p>
+        </div>
+        <div class="grid grid--3" data-reveal-group>
+          <div class="icon-card glass-light glass--interactive" data-reveal>
+            <span class="icon-card__icon"><i data-lucide="hourglass"></i></span>
+            <h3 class="icon-card__title">Vacatures blijven te lang openstaan</h3>
+            <p class="text-muted">Elke week zonder de juiste kandidaat kost geld en zet druk op de rest van je team.</p>
+          </div>
+          <div class="icon-card glass-light glass--interactive" data-reveal>
+            <span class="icon-card__icon"><i data-lucide="users"></i></span>
+            <h3 class="icon-card__title">Onboarding kost collega's te veel tijd</h3>
+            <p class="text-muted">Nieuwe medewerkers vragen om uitleg die je beste mensen van hun werk houdt.</p>
+          </div>
+          <div class="icon-card glass-light glass--interactive" data-reveal>
+            <span class="icon-card__icon"><i data-lucide="book-open"></i></span>
+            <h3 class="icon-card__title">Instructies en handleidingen worden niet gelezen</h3>
+            <p class="text-muted">Belangrijke kennis staat wel op papier, maar bereikt in de praktijk bijna niemand.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DE OPLOSSING / RESULTAAT -->
+    <section class="section section--tint" aria-labelledby="resultaat-heading">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Het resultaat</p>
+          <h2 id="resultaat-heading">Wat video je oplevert</h2>
+          <p class="lede text-muted">Eenmaal gemaakt, eindeloos inzetbaar. Dit is de richting waarin onze klanten typisch resultaat zien.</p>
+        </div>
+        <div class="grid grid--2" data-reveal-group>
+          <div class="stat-card glass-light glass--interactive" data-reveal>
+            <div class="stat-card__ring-wrap">
+              <svg class="stat-card__ring" viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="stat-card__ring-track" cx="60" cy="60" r="52"></circle>
+                <circle class="stat-card__ring-fill" cx="60" cy="60" r="52" data-ring-target="35"></circle>
+              </svg>
+              <span class="stat-card__value"><span data-counter-to="35">0</span><span class="stat-card__unit">%</span></span>
+            </div>
+            <div class="stat-card__body">
+              <span class="stat-card__tag">Voorbeeldcijfer</span>
+              <h3 class="stat-card__label">Snellere invulling van vacatures</h3>
+              <p class="stat-card__desc">Kandidaten die vooraf weten wat de functie inhoudt, solliciteren sneller en passen beter bij de rol.</p>
+            </div>
+          </div>
+          <div class="stat-card glass-light glass--interactive" data-reveal>
+            <div class="stat-card__ring-wrap">
+              <svg class="stat-card__ring" viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="stat-card__ring-track" cx="60" cy="60" r="52"></circle>
+                <circle class="stat-card__ring-fill" cx="60" cy="60" r="52" data-ring-target="40"></circle>
+              </svg>
+              <span class="stat-card__value"><span data-counter-to="40">0</span><span class="stat-card__unit">%</span></span>
+            </div>
+            <div class="stat-card__body">
+              <span class="stat-card__tag">Voorbeeldcijfer</span>
+              <h3 class="stat-card__label">Minder tijd kwijt aan mondelinge uitleg</h3>
+              <p class="stat-card__desc">Een instructievideo legt het één keer goed uit, in plaats van dat collega's het steeds opnieuw moeten doen.</p>
+            </div>
+          </div>
+          <div class="stat-card glass-light glass--interactive" data-reveal>
+            <div class="stat-card__ring-wrap">
+              <svg class="stat-card__ring" viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="stat-card__ring-track" cx="60" cy="60" r="52"></circle>
+                <circle class="stat-card__ring-fill" cx="60" cy="60" r="52" data-ring-target="60"></circle>
+              </svg>
+              <span class="stat-card__value"><span data-counter-to="60">0</span><span class="stat-card__unit">%</span></span>
+            </div>
+            <div class="stat-card__body">
+              <span class="stat-card__tag">Voorbeeldcijfer</span>
+              <h3 class="stat-card__label">Van de kennis blijft behouden, ook na verloop</h3>
+              <p class="stat-card__desc">Kennis van vertrekkende medewerkers gaat niet verloren, maar staat vast op video voor iedereen die na hen komt.</p>
+            </div>
+          </div>
+          <div class="stat-card glass-light glass--interactive" data-reveal>
+            <div class="stat-card__ring-wrap">
+              <svg class="stat-card__ring" viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="stat-card__ring-track" cx="60" cy="60" r="52"></circle>
+                <circle class="stat-card__ring-fill" cx="60" cy="60" r="52" data-ring-target="20"></circle>
+              </svg>
+              <span class="stat-card__value"><span data-counter-to="20">0</span><span class="stat-card__unit">%</span></span>
+            </div>
+            <div class="stat-card__body">
+              <span class="stat-card__tag">Voorbeeldcijfer</span>
+              <h3 class="stat-card__label">Minder verloop door realistische verwachtingen vooraf</h3>
+              <p class="stat-card__desc">Nieuwe medewerkers weten al voor hun eerste werkdag wat ze kunnen verwachten, dat scheelt teleurstellingen achteraf.</p>
+            </div>
+          </div>
+        </div>
+        <p class="results-note">Bovenstaande cijfers zijn voorbeelden ter illustratie. Zodra je eigen resultaten bekend zijn, vervang je ze hier door echte cijfers.</p>
+      </div>
+    </section>
+
+    <!-- INVESTERING, GEEN KOSTENPOST -->
+    <section class="section section--gradient" aria-labelledby="investering-heading">
+      <div class="container">
+        <div class="invest-copy" data-reveal>
+          <p class="eyebrow">Investering, geen kostenpost</p>
+          <h2 id="investering-heading">Video betaalt zichzelf terug</h2>
+          <p>Een goede video kost eenmalig tijd en budget. Daarna werkt hij dag en nacht door: op je website, op LinkedIn, in elke vacaturetekst en bij elke nieuwe medewerker die instructie nodig heeft.</p>
+          <p>Vergelijk dat met keer op keer dezelfde uitleg geven aan elke nieuwe medewerker. Hieronder lees je wat die investering in de praktijk oplevert, in de woorden van klanten die je voorgingen.</p>
+          <div class="btn-row">
+            <a href="contact.html" class="btn btn--on-gradient">Plan een kennismaking</a>
+          </div>
+        </div>
+        <div class="grid grid--2" data-reveal-group>
+          <div class="testimonial-card glass glass--interactive" data-reveal>
+            <p class="testimonial-card__quote">[Testimonial volgt. Hier komt een reactie van een klant over de tijd die de video hen heeft bespaard.]</p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar"><i data-lucide="user"></i></span>
+              <div>
+                <p class="testimonial-card__name">[Naam]</p>
+                <p class="testimonial-card__role">[Functie], [Bedrijf]</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass glass--interactive" data-reveal>
+            <p class="testimonial-card__quote">[Testimonial volgt. Hier komt een reactie van een klant over het resultaat dat de video heeft opgeleverd.]</p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar"><i data-lucide="user"></i></span>
+              <div>
+                <p class="testimonial-card__name">[Naam]</p>
+                <p class="testimonial-card__role">[Functie], [Bedrijf]</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AANBOD -->
+    <section class="section section--light section--glass-ambient" aria-labelledby="aanbod-heading">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Wat ONEMANCREW voor je maakt</p>
+          <h2 id="aanbod-heading">Ons aanbod</h2>
+          <p class="lede text-muted">Drie soorten video, elk met een concreet doel voor je bedrijf.</p>
+        </div>
+        <div class="grid grid--3" data-reveal-group>
+          <div class="offer-card glass-light glass--interactive" data-reveal>
+            <span class="offer-card__icon"><i data-lucide="briefcase"></i></span>
+            <h3 class="offer-card__title">Wervingsvideo's</h3>
+            <span class="template-flag">[TEMPLATE: vul later in]</span>
+            <p class="offer-card__desc">[TEMPLATE: korte omschrijving van deze dienst invullen]</p>
+            <ul class="offer-card__list">
+              <li><i data-lucide="check"></i><span>[TEMPLATE: bullet 1 invullen]</span></li>
+              <li><i data-lucide="check"></i><span>[TEMPLATE: bullet 2 invullen]</span></li>
+              <li><i data-lucide="check"></i><span>[TEMPLATE: bullet 3 invullen]</span></li>
+            </ul>
+            <a href="portfolio.html?filter=werving" class="btn btn--secondary btn--sm offer-card__cta">Voorbeelden bekijken</a>
+          </div>
+          <div class="offer-card glass-light glass--interactive" data-reveal>
+            <span class="offer-card__icon"><i data-lucide="graduation-cap"></i></span>
+            <h3 class="offer-card__title">Info- en instructievideo's</h3>
+            <span class="template-flag">[TEMPLATE: vul later in]</span>
+            <p class="offer-card__desc">[TEMPLATE: korte omschrijving van deze dienst invullen]</p>
+            <ul class="offer-card__list">
+              <li><i data-lucide="check"></i><span>[TEMPLATE: bullet 1 invullen]</span></li>
+              <li><i data-lucide="check"></i><span>[TEMPLATE: bullet 2 invullen]</span></li>
+              <li><i data-lucide="check"></i><span>[TEMPLATE: bullet 3 invullen]</span></li>
+            </ul>
+            <a href="portfolio.html?filter=info" class="btn btn--secondary btn--sm offer-card__cta">Voorbeelden bekijken</a>
+          </div>
+          <div class="offer-card glass-light glass--interactive" data-reveal>
+            <span class="offer-card__icon"><i data-lucide="megaphone"></i></span>
+            <h3 class="offer-card__title">Recruitment advertenties</h3>
+            <span class="template-flag">[TEMPLATE: vul later in]</span>
+            <p class="offer-card__desc">[TEMPLATE: korte omschrijving van deze dienst invullen]</p>
+            <ul class="offer-card__list">
+              <li><i data-lucide="check"></i><span>[TEMPLATE: bullet 1 invullen]</span></li>
+              <li><i data-lucide="check"></i><span>[TEMPLATE: bullet 2 invullen]</span></li>
+              <li><i data-lucide="check"></i><span>[TEMPLATE: bullet 3 invullen]</span></li>
+            </ul>
+            <a href="portfolio.html?filter=advertenties" class="btn btn--secondary btn--sm offer-card__cta">Voorbeelden bekijken</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAATSTE WERK: CARROUSEL -->
+    <section class="section section--dark carousel-section" aria-labelledby="laatste-werk-heading">
+      <div class="carousel-ambient" aria-hidden="true">
+        <span class="carousel-ambient__blob carousel-ambient__blob--a"></span>
+        <span class="carousel-ambient__blob carousel-ambient__blob--b"></span>
+      </div>
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Portfolio</p>
+          <h2 id="laatste-werk-heading">Laatste werk</h2>
+          <p class="lede text-muted">Een greep uit recent werk. Sleep of klik door de carrousel, of bekijk het volledige portfolio.</p>
+        </div>
+        <div class="carousel" data-slideshow data-reveal tabindex="0" role="group" aria-roledescription="carrousel" aria-label="Laatste projecten">
+          <div class="carousel__stage" data-slideshow-track></div>
+          <p class="sr-only" aria-live="polite" data-slideshow-announcer></p>
+          <div class="carousel__controls">
+            <div class="carousel__progress" data-slideshow-progress></div>
+            <span class="timecode carousel__timecode" data-slideshow-timecode>01 / 01</span>
+            <div class="carousel__arrows">
+              <button type="button" class="carousel__arrow" data-slideshow-prev aria-label="Vorig project"><i data-lucide="chevron-left"></i></button>
+              <button type="button" class="carousel__arrow" data-slideshow-next aria-label="Volgend project"><i data-lucide="chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="btn-row btn-row--center slideshow-more">
+          <a href="portfolio.html" class="btn btn--ghost btn--on-dark">Bekijk al het werk<i data-lucide="arrow-right" class="btn__label-icon" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WERKWIJZE -->
+    <section class="section section--light section--glass-ambient process" aria-labelledby="werkwijze-heading">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Werkwijze</p>
+          <h2 id="werkwijze-heading">Van kennismaking tot oplevering</h2>
+        </div>
+        <ol class="process__list" data-reveal-group>
+          <li class="process__item glass-light glass--interactive" data-reveal>
+            <span class="process__node" aria-hidden="true">1</span>
+            <span class="process__icon" aria-hidden="true"><i data-lucide="calendar"></i></span>
+            <h3 class="process__title">Kennismaking</h3>
+            <p class="process__desc">We bespreken je doel, je doelgroep en de boodschap die moet landen.</p>
+          </li>
+          <li class="process__item glass-light glass--interactive" data-reveal>
+            <span class="process__node" aria-hidden="true">2</span>
+            <span class="process__icon" aria-hidden="true"><i data-lucide="clapperboard"></i></span>
+            <h3 class="process__title">Concept en script</h3>
+            <p class="process__desc">Je krijgt een concreet plan en script, geen verrassingen achteraf.</p>
+          </li>
+          <li class="process__item glass-light glass--interactive" data-reveal>
+            <span class="process__node" aria-hidden="true">3</span>
+            <span class="process__icon" aria-hidden="true"><i data-lucide="camera"></i></span>
+            <h3 class="process__title">Opname</h3>
+            <p class="process__desc">Op locatie of in de studio, inclusief dronebeeld waar dat waarde toevoegt.</p>
+          </li>
+          <li class="process__item glass-light glass--interactive" data-reveal>
+            <span class="process__node" aria-hidden="true">4</span>
+            <span class="process__icon" aria-hidden="true"><i data-lucide="film"></i></span>
+            <h3 class="process__title">Montage en oplevering</h3>
+            <p class="process__desc">Je ontvangt de video in de formaten die je nodig hebt, klaar voor gebruik.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- VERTROUWEN -->
+    <section class="section section--tint section--glass-ambient" aria-labelledby="vertrouwen-heading">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Vertrouwen</p>
+          <h2 id="vertrouwen-heading">Bedrijven die je voorgingen</h2>
+        </div>
+        <div class="logo-row" data-reveal>
+          <div class="logo-placeholder">Klantlogo</div>
+          <div class="logo-placeholder">Klantlogo</div>
+          <div class="logo-placeholder">Klantlogo</div>
+          <div class="logo-placeholder">Klantlogo</div>
+          <div class="logo-placeholder">Klantlogo</div>
+          <div class="logo-placeholder">Klantlogo</div>
+        </div>
+        <div class="grid grid--3" data-reveal-group>
+          <div class="testimonial-card glass-light glass--interactive" data-reveal>
+            <p class="testimonial-card__quote">[Testimonial volgt. Hier komt binnenkort een reactie van een tevreden klant.]</p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar"><i data-lucide="user"></i></span>
+              <div>
+                <p class="testimonial-card__name">[Naam]</p>
+                <p class="testimonial-card__role">[Functie], [Bedrijf]</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass-light glass--interactive" data-reveal>
+            <p class="testimonial-card__quote">[Testimonial volgt. Hier komt binnenkort een reactie van een tevreden klant.]</p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar"><i data-lucide="user"></i></span>
+              <div>
+                <p class="testimonial-card__name">[Naam]</p>
+                <p class="testimonial-card__role">[Functie], [Bedrijf]</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass-light glass--interactive" data-reveal>
+            <p class="testimonial-card__quote">[Testimonial volgt. Hier komt binnenkort een reactie van een tevreden klant.]</p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar"><i data-lucide="user"></i></span>
+              <div>
+                <p class="testimonial-card__name">[Naam]</p>
+                <p class="testimonial-card__role">[Functie], [Bedrijf]</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="section section--gradient cta-band" aria-labelledby="cta-heading">
+      <div class="container cta-band__inner">
+        <h2 id="cta-heading">Klaar om het verschil te zien?</h2>
+        <p class="lede">Plan een vrijblijvende kennismaking en ontdek wat video voor jouw bedrijf kan doen.</p>
+        <div class="cta-band__actions">
+          <a href="contact.html" class="btn btn--on-gradient">Plan een kennismaking</a>
+          <a href="portfolio.html" class="btn btn--secondary btn--on-dark">Bekijk het portfolio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a href="index.html" class="site-footer__brand-logo">ONEMANCREW</a>
+          <p class="site-footer__slogan">Masters of creative thinking.</p>
+          <p class="site-footer__pitch text-muted">Video die vacatures sneller vult, onboarding verlicht en kennis vasthoudt. Eenmalig gemaakt, blijvend inzetbaar.</p>
+          <div class="site-footer__social">
+            <a href="https://www.linkedin.com/company/onemancrew" target="_blank" rel="noopener noreferrer" aria-label="ONEMANCREW op LinkedIn"><i data-lucide="briefcase"></i></a>
+            <a href="https://www.instagram.com/onemancrew" target="_blank" rel="noopener noreferrer" aria-label="ONEMANCREW op Instagram"><i data-lucide="aperture"></i></a>
+          </div>
+        </div>
+        <div>
+          <h2 class="site-footer__heading">Navigatie</h2>
+          <ul class="site-footer__list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="over-ons.html">Over ons</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="site-footer__heading">Contact</h2>
+          <ul class="site-footer__list">
+            <li class="site-footer__contact-item"><i data-lucide="mail"></i><a href="mailto:contact@onemancrew.nl">contact@onemancrew.nl</a></li>
+            <li class="site-footer__contact-item"><i data-lucide="phone"></i><a href="tel:+31628637074">+31 6 28637074</a></li>
+            <li class="site-footer__contact-item"><i data-lucide="map-pin"></i><span>Limmen, werkzaam in heel Nederland</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>KvK [TEMPLATE: KvK-nummer invullen]</p>
+        <p>&copy; <span data-current-year>2026</span> ONEMANCREW. Alle rechten voorbehouden.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="tel:+31628637074" class="floating-contact glass glass--interactive" aria-label="Bel ONEMANCREW, +31 6 28637074">
+    <i data-lucide="phone"></i>
+  </a>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="assets/js/portfolio-data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
