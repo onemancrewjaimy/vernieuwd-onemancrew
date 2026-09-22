@@ -1617,6 +1617,14 @@ h4 {
   margin-bottom: var(--space-2xs);
 }
 
+.offer-card__title-suffix {
+  /* De browser behandelt de apostrof kennelijk als een geldig afbreekpunt,
+     waardoor alleen de "s" losraakt op een eigen regel. white-space:nowrap
+     plakt de apostrof en de s aan elkaar, dus als het woord al moet
+     afbreken, dan tenminste niet meer middenin. */
+  white-space: nowrap;
+}
+
 .offer-card__desc {
   color: var(--color-text-on-light-muted);
   margin-bottom: var(--space-md);
