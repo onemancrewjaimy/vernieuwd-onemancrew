@@ -285,6 +285,11 @@
     var elements = document.querySelectorAll('[data-live-timecode]');
     if (!elements.length) return;
 
+    // De hero-HUD is pas vanaf 1024px zichtbaar (zie .hero__hud in
+    // style.css), dus op kleinere schermen heeft een doorlopende
+    // rAF-lus hiervoor geen zin en is het puur verspilde CPU/batterij.
+    if (!window.matchMedia('(min-width: 1024px)').matches) return;
+
     if (prefersReducedMotion) {
       elements.forEach(function (el) {
         el.textContent = '00:00:00:00';
