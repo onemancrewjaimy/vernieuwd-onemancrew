@@ -1487,6 +1487,14 @@ h4 {
   }
 }
 
+.stat-card__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--space-2xs);
+}
+
 .stat-card__ring-wrap {
   position: relative;
   flex-shrink: 0;
@@ -1531,6 +1539,14 @@ h4 {
 
 .stat-card__unit {
   font-size: 0.65em;
+}
+
+.stat-card__value-note {
+  max-width: 132px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-on-light-muted);
+  text-align: center;
 }
 
 .stat-card__tag {
@@ -1594,6 +1610,10 @@ h4 {
 }
 
 .offer-card__title {
+  /* Iets kleiner dan de standaard h3: bij de volle grootte brak de
+     apostrof-s van "Wervingsvideo's" en "instructievideo's" soms naar een
+     eigen regel, alsof hij los onder het woord hing. */
+  font-size: 0.85em;
   margin-bottom: var(--space-2xs);
 }
 

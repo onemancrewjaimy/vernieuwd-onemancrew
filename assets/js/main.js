@@ -535,19 +535,25 @@
   }
 
   /* ------------------------------------------------------------------
-     Tellende cijfers bij resultaten.
+     Tellende cijfers bij resultaten. Het aantal decimalen volgt uit de
+     doelwaarde zelf (bijv. "5.5" telt met één decimaal op, "100" telt in
+     hele getallen), en wordt met een komma weergegeven, niet een punt.
      ------------------------------------------------------------------ */
+  function formatCounterValue(value, decimals) {
+    return value.toFixed(decimals).replace('.', ',');
+  }
+
   function animateValue(el, to, duration) {
+    var decimals = (String(to).split('.')[1] || '').length;
     var start = performance.now();
     function frame(now) {
       var progress = Math.min((now - start) / duration, 1);
       var eased = 1 - Math.pow(1 - progress, 3);
-      var value = Math.round(to * eased);
-      el.textContent = value;
+      el.textContent = formatCounterValue(to * eased, decimals);
       if (progress < 1) {
         requestAnimationFrame(frame);
       } else {
-        el.textContent = to;
+        el.textContent = formatCounterValue(to, decimals);
       }
     }
     requestAnimationFrame(frame);
@@ -558,9 +564,10 @@
     if (!counters.length) return;
 
     function run(el) {
-      var to = parseFloat(el.getAttribute('data-counter-to'));
+      var raw = el.getAttribute('data-counter-to');
+      var to = parseFloat(raw);
       if (prefersReducedMotion) {
-        el.textContent = to;
+        el.textContent = formatCounterValue(to, (raw.split('.')[1] || '').length);
         return;
       }
       animateValue(el, to, 1500);
