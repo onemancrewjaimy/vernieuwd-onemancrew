@@ -17,11 +17,16 @@
  * - result:         wat de video heeft opgeleverd (voor de modal)
  * - date:          "JJJJ-MM", wordt gebruikt om de nieuwste projecten te bepalen
  * - featured:      true/false, gebruikt als extra signaal voor de slideshow
+ * - video:         (optioneel) pad naar een echt videobestand, bijvoorbeeld
+ *                   "assets/video/mileway-onboarding.mp4". Zonder dit veld
+ *                   tonen de carrousel, portfoliokaart en modal automatisch
+ *                   de decoratieve "video volgt binnenkort"-placeholder.
  *
- * Thumbnails en videospelers zijn voorlopig placeholders (zie video-placeholder
- * in style.css en de toelichting in README.md). Zodra er echt beeldmateriaal
- * is, kan er in portfolio-card__media en modal__media een <img> of <video>
- * worden toegevoegd.
+ * Projecten zonder eigen beeldmateriaal tonen nog de decoratieve
+ * video-placeholder (zie video-placeholder in style.css). Zodra er een
+ * bestand bij "video" staat, spelen carrousel en portfoliokaart alleen het
+ * eerste beeld af als voorbeeld (geen autoplay, geen controls, om
+ * bandbreedte te sparen), en toont de modal de echte, afspeelbare video.
  */
 
 const ONEMANCREW_PROJECTS = [
@@ -79,16 +84,17 @@ const ONEMANCREW_PROJECTS = [
   },
   {
     id: 'project-05',
-    client: '[TEMPLATE: klantnaam]',
+    client: 'Mileway',
     category: 'info',
     categoryLabel: 'Onboardingvideo',
-    title: '[TEMPLATE: projecttitel invullen]',
-    summary: '[TEMPLATE: korte omschrijving van het resultaat in een zin]',
+    title: '',
+    summary: 'Welkomstvideo voor nieuwe klanten die net zijn begonnen bij Mileway.',
     challenge: '[TEMPLATE: welke vraag of welk probleem had deze klant]',
     approach: '[TEMPLATE: hoe heeft ONEMANCREW dit aangepakt]',
     result: '[TEMPLATE: wat leverde de video concreet op]',
-    date: '2026-04',
-    featured: false,
+    date: '2026-09',
+    featured: true,
+    video: 'assets/video/mileway-onboarding.mp4',
   },
   {
     id: 'project-06',

@@ -655,6 +655,54 @@
   }
 
   /* ------------------------------------------------------------------
+     Bouwt de video-placeholder markup, of, zodra een project een echt
+     bestand heeft (project.video in portfolio-data.js), een echte <video>
+     erin. In de carrousel en op de portfoliokaart is die video alleen een
+     stil eerste beeld (geen controls, geen autoplay, preload="metadata"),
+     zodat er nooit ongevraagd tientallen megabytes gestreamd worden.
+     Alleen de modal, die je zelf opent, krijgt echte afspeelknoppen.
+     ------------------------------------------------------------------ */
+  function videoMediaTemplate(project, opts) {
+    opts = opts || {};
+    var hasVideo = !!project.video;
+    var exposeToAT = hasVideo && opts.controls;
+    var tag = opts.tag || 'div';
+    var textTag = tag === 'span' ? 'span' : 'p';
+    var classes = 'video-placeholder video-placeholder--tinted' + (opts.extraClass ? ' ' + opts.extraClass : '');
+    var html = '<' + tag + ' class="' + classes + '"' + (exposeToAT ? '' : ' aria-hidden="true"') + '>';
+
+    if (hasVideo) {
+      html +=
+        '<video class="video-placeholder__video" preload="metadata" playsinline' +
+        (opts.controls ? ' controls' : ' muted tabindex="-1"') +
+        '><source src="' +
+        project.video +
+        '" type="video/mp4"></video>';
+    }
+
+    html +=
+      '<span class="frame-corners">' +
+      '<span class="frame-corners__corner frame-corners__corner--tl"></span>' +
+      '<span class="frame-corners__corner frame-corners__corner--tr"></span>' +
+      '<span class="frame-corners__corner frame-corners__corner--bl"></span>' +
+      '<span class="frame-corners__corner frame-corners__corner--br"></span>' +
+      '</span>';
+
+    if (opts.rec) {
+      html += '<span class="rec-tag video-placeholder__rec"><span class="rec-tag__dot"></span>REC</span>';
+    }
+    if (!hasVideo || !opts.controls) {
+      html += '<span class="video-placeholder__play"><i data-lucide="play"></i></span>';
+    }
+    if (!hasVideo && opts.text) {
+      html += '<' + textTag + ' class="video-placeholder__text">Video volgt binnenkort</' + textTag + '>';
+    }
+
+    html += '</' + tag + '>';
+    return html;
+  }
+
+  /* ------------------------------------------------------------------
      Carrousel "Laatste werk" (homepage). Coverflow-achtig: de actieve
      kaart staat groot en scherp, buren piepen kleiner en onscherp om de
      hoek. Gevoed door dezelfde data als de portfoliopagina, zie
@@ -696,17 +744,7 @@
         ' van ' +
         projects.length +
         '">' +
-        '<div class="video-placeholder video-placeholder--tinted has-frame-static" aria-hidden="true">' +
-        '<span class="frame-corners">' +
-        '<span class="frame-corners__corner frame-corners__corner--tl"></span>' +
-        '<span class="frame-corners__corner frame-corners__corner--tr"></span>' +
-        '<span class="frame-corners__corner frame-corners__corner--bl"></span>' +
-        '<span class="frame-corners__corner frame-corners__corner--br"></span>' +
-        '</span>' +
-        '<span class="rec-tag video-placeholder__rec"><span class="rec-tag__dot"></span>REC</span>' +
-        '<span class="video-placeholder__play"><i data-lucide="play"></i></span>' +
-        '<p class="video-placeholder__text">Video volgt binnenkort</p>' +
-        '</div>' +
+        videoMediaTemplate(project, { rec: true, text: true, controls: false, extraClass: 'has-frame-static' }) +
         '<div class="carousel__body">' +
         '<p class="eyebrow carousel__category">' +
         project.categoryLabel +
@@ -997,15 +1035,7 @@
         project.id +
         '" aria-haspopup="dialog">' +
         '<span class="portfolio-card__media">' +
-        '<span class="video-placeholder video-placeholder--tinted" aria-hidden="true">' +
-        '<span class="frame-corners">' +
-        '<span class="frame-corners__corner frame-corners__corner--tl"></span>' +
-        '<span class="frame-corners__corner frame-corners__corner--tr"></span>' +
-        '<span class="frame-corners__corner frame-corners__corner--bl"></span>' +
-        '<span class="frame-corners__corner frame-corners__corner--br"></span>' +
-        '</span>' +
-        '<span class="video-placeholder__play"><i data-lucide="play"></i></span>' +
-        '</span>' +
+        videoMediaTemplate(project, { rec: false, text: false, controls: false, tag: 'span' }) +
         '</span>' +
         '<span class="portfolio-card__body">' +
         '<span class="portfolio-card__category">' +
@@ -1057,17 +1087,7 @@
 
     function modalTemplate(project) {
       return (
-        '<div class="video-placeholder video-placeholder--tinted has-frame-static modal__media">' +
-        '<span class="frame-corners">' +
-        '<span class="frame-corners__corner frame-corners__corner--tl"></span>' +
-        '<span class="frame-corners__corner frame-corners__corner--tr"></span>' +
-        '<span class="frame-corners__corner frame-corners__corner--bl"></span>' +
-        '<span class="frame-corners__corner frame-corners__corner--br"></span>' +
-        '</span>' +
-        '<span class="rec-tag video-placeholder__rec"><span class="rec-tag__dot"></span>REC</span>' +
-        '<span class="video-placeholder__play"><i data-lucide="play"></i></span>' +
-        '<p class="video-placeholder__text">Video volgt binnenkort</p>' +
-        '</div>' +
+        videoMediaTemplate(project, { rec: true, text: true, controls: true, extraClass: 'has-frame-static modal__media' }) +
         '<div class="modal__meta">' +
         '<span class="modal__category">' +
         project.categoryLabel +
@@ -1119,6 +1139,13 @@
       if (focusTrap) focusTrap.deactivate();
       history.replaceState(null, '', window.location.pathname + window.location.search);
       if (lastFocused) lastFocused.focus();
+      if (modalContent) {
+        // Anders speelt de video (met geluid) gewoon door op de achtergrond
+        // nadat de modal al gesloten is.
+        modalContent.querySelectorAll('video').forEach(function (video) {
+          video.pause();
+        });
+      }
     }
 
     if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
