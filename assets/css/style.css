@@ -1610,18 +1610,24 @@ h4 {
 }
 
 .offer-card__title {
-  /* Iets kleiner dan de standaard h3: bij de volle grootte brak de
-     apostrof-s van "Wervingsvideo's" en "instructievideo's" soms naar een
-     eigen regel, alsof hij los onder het woord hing. */
-  font-size: 0.85em;
   margin-bottom: var(--space-2xs);
 }
 
+@media (min-width: 768px) and (max-width: 1199px) {
+  .offer-card__title {
+    /* In dit tussenliggende bereik staan de aanbod-kaarten al in 3
+       kolommen, maar zijn ze nog te smal voor de volle kopgrootte:
+       "Recruitment advertenties" brak dan middenin een woord af. Vanaf
+       1200px is er weer genoeg ruimte voor de volle grootte. */
+    font-size: calc(var(--fs-xl) * 0.6);
+  }
+}
+
 .offer-card__title-suffix {
-  /* De browser behandelt de apostrof kennelijk als een geldig afbreekpunt,
-     waardoor alleen de "s" losraakt op een eigen regel. white-space:nowrap
-     plakt de apostrof en de s aan elkaar, dus als het woord al moet
-     afbreken, dan tenminste niet meer middenin. */
+  /* Houdt "video's" bij elkaar als een eenheid. Moet de titel toch
+     afbreken (op erg smalle schermen), dan gebeurt dat nu vóór dit hele
+     stuk, op de natuurlijke samenstelling-grens ("Wervings" + "video's"),
+     in plaats van ergens middenin een woord of net voor de losse "s". */
   white-space: nowrap;
 }
 
