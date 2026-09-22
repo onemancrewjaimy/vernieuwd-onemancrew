@@ -680,13 +680,15 @@
         '" type="video/mp4"></video>';
     }
 
-    html +=
-      '<span class="frame-corners">' +
-      '<span class="frame-corners__corner frame-corners__corner--tl"></span>' +
-      '<span class="frame-corners__corner frame-corners__corner--tr"></span>' +
-      '<span class="frame-corners__corner frame-corners__corner--bl"></span>' +
-      '<span class="frame-corners__corner frame-corners__corner--br"></span>' +
-      '</span>';
+    if (opts.corners !== false) {
+      html +=
+        '<span class="frame-corners">' +
+        '<span class="frame-corners__corner frame-corners__corner--tl"></span>' +
+        '<span class="frame-corners__corner frame-corners__corner--tr"></span>' +
+        '<span class="frame-corners__corner frame-corners__corner--bl"></span>' +
+        '<span class="frame-corners__corner frame-corners__corner--br"></span>' +
+        '</span>';
+    }
 
     if (opts.rec) {
       html += '<span class="rec-tag video-placeholder__rec"><span class="rec-tag__dot"></span>REC</span>';
@@ -744,7 +746,7 @@
         ' van ' +
         projects.length +
         '">' +
-        videoMediaTemplate(project, { rec: true, text: true, controls: false, extraClass: 'has-frame-static' }) +
+        videoMediaTemplate(project, { text: true, controls: true, corners: false }) +
         '<div class="carousel__body">' +
         '<p class="eyebrow carousel__category">' +
         project.categoryLabel +
@@ -958,9 +960,16 @@
       if (event.key === 'ArrowRight') next();
     });
 
-    /* Eén pointer-gebaseerde sleepafhandeling voor zowel muis als touch. */
+    /* Eén pointer-gebaseerde sleepafhandeling voor zowel muis als touch.
+       setPointerCapture pas ZODRA er echt gesleept wordt, niet meteen bij
+       pointerdown: zodra een element de pointer "captured" heeft, worden
+       alle latere events (inclusief het click-event) daarnaar toe
+       omgeleid, ook al zit de aanwijzer nog boven een link erin. Deed je
+       dat al bij pointerdown, dan werkte geen enkele link of knop in de
+       kaart meer, ook niet bij een simpele klik zonder slepen. */
     var dragStartX = null;
     var dragActive = false;
+    var dragPointerId = null;
     var DRAG_THRESHOLD = 40;
     var MOVE_THRESHOLD = 6;
 
@@ -969,24 +978,35 @@
       dragActive = true;
       dragMoved = false;
       dragStartX = event.clientX;
-      if (stage.setPointerCapture) {
-        try {
-          stage.setPointerCapture(event.pointerId);
-        } catch (e) {
-          /* negeren, niet kritiek */
-        }
-      }
+      dragPointerId = event.pointerId;
     });
 
     stage.addEventListener('pointermove', function (event) {
       if (!dragActive || dragStartX === null) return;
       var delta = event.clientX - dragStartX;
-      if (Math.abs(delta) > MOVE_THRESHOLD) dragMoved = true;
+      if (!dragMoved && Math.abs(delta) > MOVE_THRESHOLD) {
+        dragMoved = true;
+        if (stage.setPointerCapture) {
+          try {
+            stage.setPointerCapture(event.pointerId);
+          } catch (e) {
+            /* negeren, niet kritiek */
+          }
+        }
+      }
     });
 
     function endDrag(event) {
       if (!dragActive) return;
       dragActive = false;
+      if (stage.releasePointerCapture && dragPointerId !== null) {
+        try {
+          stage.releasePointerCapture(dragPointerId);
+        } catch (e) {
+          /* negeren, niet kritiek */
+        }
+      }
+      dragPointerId = null;
       if (dragStartX !== null) {
         var delta = event.clientX - dragStartX;
         if (Math.abs(delta) > DRAG_THRESHOLD) {
@@ -1087,7 +1107,7 @@
 
     function modalTemplate(project) {
       return (
-        videoMediaTemplate(project, { rec: true, text: true, controls: true, extraClass: 'has-frame-static modal__media' }) +
+        videoMediaTemplate(project, { text: true, controls: true, corners: false, extraClass: 'modal__media' }) +
         '<div class="modal__meta">' +
         '<span class="modal__category">' +
         project.categoryLabel +
