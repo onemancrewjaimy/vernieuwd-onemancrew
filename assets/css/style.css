@@ -1671,7 +1671,16 @@ h4 {
 }
 
 .offer-card__cta {
+  /* Deze knop wordt door de flex-kaart uitgerekt tot de volle kaartbreedte
+     (minus padding), wat op de smalste 3-koloms-breedte (rond 768px)
+     maar zo'n 137px is. "Voorbeelden bekijken" paste daar niet meer op
+     1 regel en brak af, waardoor de knop per schermbreedte van hoogte
+     leek te wisselen. Korter label en iets minder padding lossen dat
+     structureel op in plaats van de tekst nog kleiner te maken.
+     white-space:nowrap voorkomt dat het ooit weer terugkomt. */
   margin-top: auto;
+  padding-inline: 1rem;
+  white-space: nowrap;
 }
 
 .template-flag {
