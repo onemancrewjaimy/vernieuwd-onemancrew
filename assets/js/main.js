@@ -205,6 +205,20 @@
         window.location.href = link.href;
       });
     });
+
+    // De pagina die je verlaat, blijft achter met de overlay dicht (dat is
+    // immers het laatste beeld vlak voor de navigatie). Ga je met de
+    // terug/vooruit-knop van de browser naar die pagina toe, dan kan de
+    // browser hem uit de bfcache herstellen als exacte momentopname, zonder
+    // dat er ook maar iets van dit script opnieuw draait. Zonder dit zou
+    // het scherm dan voorgoed grijs/dicht blijven, met de overlay nog
+    // klikken blokkerend ook. pageshow met persisted true vangt precies dat
+    // moment op en klapt de overlay direct weer open.
+    window.addEventListener('pageshow', function (event) {
+      if (!event.persisted) return;
+      setInstant(OPEN_SIZE);
+      overlay.style.pointerEvents = 'none';
+    });
   }
 
   /* ------------------------------------------------------------------
