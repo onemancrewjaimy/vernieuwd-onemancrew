@@ -27,9 +27,48 @@
  * bestand bij "video" staat, spelen carrousel en portfoliokaart alleen het
  * eerste beeld af als voorbeeld (geen autoplay, geen controls, om
  * bandbreedte te sparen), en toont de modal de echte, afspeelbare video.
+ *
+ * ONEMANCREW_PROJECTS bevat alleen echte, live projecten. Nieuwe
+ * [TEMPLATE: ...]-projecten staan in ARCHIVED_TEMPLATE_PROJECTS hieronder:
+ * kopieer zo'n object terug naar ONEMANCREW_PROJECTS zodra je de echte
+ * klantnaam, titel en tekst hebt, en vul challenge/approach/result pas in
+ * als je het echte verhaal kent (zolang challenge/approach/result nog
+ * beginnen met "[TEMPLATE:", laat de portfoliomodal dat case-blok gewoon
+ * weg in plaats van halve informatie te tonen).
+ *
+ * LET OP (geen build-stap op deze site): de kaarten op index.html en
+ * portfolio.html staan ook als kant-en-klare HTML in die bestanden zelf,
+ * zodat ze zonder JavaScript (en voor zoekmachines) meteen zichtbaar zijn.
+ * JavaScript voegt daar alleen filtering en de detail-modal aan toe. Voeg
+ * je hier een project toe of wijzig je er een, werk dan ook de bijpassende
+ * kaart in index.html (sectie "Laatste werk") en portfolio.html (sectie
+ * "portfolio-grid") handmatig bij.
  */
 
 const ONEMANCREW_PROJECTS = [
+  {
+    id: 'project-05',
+    client: 'Mileway',
+    category: 'info',
+    categoryLabel: 'Onboardingvideo',
+    title: 'Onboardingvideo voor Mileway',
+    summary: 'Welkomstvideo voor nieuwe klanten die net zijn begonnen bij Mileway.',
+    challenge: '[TEMPLATE: welke vraag of welk probleem had deze klant]',
+    approach: '[TEMPLATE: hoe heeft ONEMANCREW dit aangepakt]',
+    result: '[TEMPLATE: wat leverde de video concreet op]',
+    date: '2026-09',
+    featured: true,
+    video: 'assets/video/mileway-onboarding.mp4',
+  },
+];
+
+/**
+ * Gearchiveerd op verzoek: deze projecten waren nog volledig
+ * [TEMPLATE: ...]-placeholders (geen echte klantnaam of tekst), dus ze
+ * stonden niet live. Niet verwijderd, alleen hier bewaard zodat ze zo
+ * terug te zetten zijn zodra er echte projectinformatie is.
+ */
+const ARCHIVED_TEMPLATE_PROJECTS = [
   {
     id: 'project-01',
     client: '[TEMPLATE: klantnaam]',
@@ -83,20 +122,6 @@ const ONEMANCREW_PROJECTS = [
     featured: true,
   },
   {
-    id: 'project-05',
-    client: 'Mileway',
-    category: 'info',
-    categoryLabel: 'Onboardingvideo',
-    title: '',
-    summary: 'Welkomstvideo voor nieuwe klanten die net zijn begonnen bij Mileway.',
-    challenge: '[TEMPLATE: welke vraag of welk probleem had deze klant]',
-    approach: '[TEMPLATE: hoe heeft ONEMANCREW dit aangepakt]',
-    result: '[TEMPLATE: wat leverde de video concreet op]',
-    date: '2026-09',
-    featured: true,
-    video: 'assets/video/mileway-onboarding.mp4',
-  },
-  {
     id: 'project-06',
     client: '[TEMPLATE: klantnaam]',
     category: 'advertenties',
@@ -123,4 +148,13 @@ function getLatestProjects(count) {
 
 function getProjectById(id) {
   return ONEMANCREW_PROJECTS.find((project) => project.id === id) || null;
+}
+
+/**
+ * True zolang een veld nog een oningevulde [TEMPLATE: ...]-placeholder is.
+ * Gebruikt door de portfoliomodal om een halfgevuld case-blok (vraag/
+ * aanpak/resultaat) te verbergen in plaats van placeholdertekst te tonen.
+ */
+function isTemplateValue(value) {
+  return typeof value === 'string' && value.indexOf('[TEMPLATE:') === 0;
 }

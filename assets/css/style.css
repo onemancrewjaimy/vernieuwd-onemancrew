@@ -1359,6 +1359,14 @@ h4 {
   align-items: flex-end;
 }
 
+/* Kortere pagehero: alleen label + titel, geen subtitel/CTA, zodat op
+   portfolio.html het werk zelf meteen in beeld komt. */
+.page-hero--compact {
+  min-height: 32svh;
+  padding-top: calc(6.5rem + var(--space-xl));
+  padding-bottom: var(--space-xl);
+}
+
 .page-hero__media {
   position: absolute;
   inset: 0;
@@ -2347,6 +2355,18 @@ button.has-frame-reveal:hover .video-placeholder__play {
   font-size: var(--fs-xs);
 }
 
+.site-footer__credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--duration-base) var(--ease-camera);
+}
+
+.site-footer__credit a:hover,
+.site-footer__credit a:focus-visible {
+  color: var(--color-accent);
+}
+
 /* --------------------------------------------------------------------------
    23. PORTFOLIO: FILTERS, GRID, MODAL
    -------------------------------------------------------------------------- */
@@ -2413,6 +2433,16 @@ button.has-frame-reveal:hover .video-placeholder__play {
 }
 
 .portfolio-card.is-hidden {
+  display: none;
+}
+
+.portfolio-empty {
+  grid-column: 1 / -1;
+  padding: var(--space-lg) 0;
+  text-align: center;
+}
+
+.portfolio-empty[hidden] {
   display: none;
 }
 
@@ -2994,6 +3024,16 @@ button.has-frame-reveal:hover .video-placeholder__play {
   font-size: var(--fs-xs);
   color: var(--color-text-on-light-muted);
   margin-top: var(--space-2xs);
+}
+
+.contact-portfolio-link {
+  margin-top: var(--space-lg);
+  font-size: var(--fs-sm);
+}
+
+.contact-portfolio-link a {
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .form-footer {

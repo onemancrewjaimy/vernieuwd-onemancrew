@@ -1091,9 +1091,18 @@
       );
     }
 
+    // De kaarten staan al als kant-en-klare HTML in de pagina (voor
+    // bezoekers en zoekmachines zonder JavaScript), dus render() hoeft de
+    // grid niet opnieuw op te bouwen: hij koppelt alleen de klik-naar-modal
+    // aan de bestaande kaarten. Zijn er om wat voor reden geen
+    // server-gerenderde kaarten (bijvoorbeeld een lege [data-portfolio-grid]
+    // die alsnog op een andere pagina wordt hergebruikt), dan bouwt hij ze
+    // als vangnet alsnog met dezelfde template.
     function render() {
-      grid.innerHTML = ONEMANCREW_PROJECTS.map(cardTemplate).join('');
-      refreshDynamicContent(grid);
+      if (!grid.querySelector('[data-portfolio-card]')) {
+        grid.innerHTML = ONEMANCREW_PROJECTS.map(cardTemplate).join('');
+        refreshDynamicContent(grid);
+      }
       grid.querySelectorAll('[data-portfolio-open]').forEach(function (card) {
         card.addEventListener('click', function () {
           openModal(card.getAttribute('data-portfolio-open'));
@@ -1101,11 +1110,25 @@
       });
     }
 
+    function ensureEmptyState() {
+      var el = grid.querySelector('[data-portfolio-empty]');
+      if (!el) {
+        el = document.createElement('p');
+        el.setAttribute('data-portfolio-empty', '');
+        el.className = 'portfolio-empty text-muted';
+        el.textContent = 'Nog geen projecten in deze categorie. Neem contact op voor voorbeelden op aanvraag.';
+        grid.appendChild(el);
+      }
+      return el;
+    }
+
     function applyFilter(category) {
       var cards = Array.prototype.slice.call(grid.querySelectorAll('[data-portfolio-card]'));
+      var visibleCount = 0;
       cards.forEach(function (card) {
         var matches = category === 'alles' || card.getAttribute('data-category') === category;
         if (matches) {
+          visibleCount += 1;
           card.classList.remove('is-hidden');
           requestAnimationFrame(function () {
             card.classList.remove('is-filtered-out');
@@ -1117,6 +1140,14 @@
           }, 320);
         }
       });
+
+      var emptyState = grid.querySelector('[data-portfolio-empty]');
+      if (visibleCount === 0) {
+        ensureEmptyState().hidden = false;
+      } else if (emptyState) {
+        emptyState.hidden = true;
+      }
+
       if (filterBar) {
         filterBar.querySelectorAll('[data-filter]').forEach(function (btn) {
           btn.setAttribute('aria-pressed', String(btn.getAttribute('data-filter') === category));
@@ -1125,6 +1156,12 @@
     }
 
     function modalTemplate(project) {
+      // Zolang challenge/approach/result nog placeholders zijn, is er geen
+      // echte case om te tonen: dan laten we dat blok gewoon weg in plaats
+      // van halve of onechte informatie te tonen.
+      var hasCase =
+        !isTemplateValue(project.challenge) && !isTemplateValue(project.approach) && !isTemplateValue(project.result);
+
       return (
         videoMediaTemplate(project, { text: true, controls: true, corners: false, extraClass: 'modal__media' }) +
         '<div class="modal__meta">' +
@@ -1139,17 +1176,19 @@
         '<p class="lede">' +
         project.summary +
         '</p>' +
-        '<div class="modal__case">' +
-        '<div class="modal__case-item"><h3>Vraag</h3><p>' +
-        project.challenge +
-        '</p></div>' +
-        '<div class="modal__case-item"><h3>Aanpak</h3><p>' +
-        project.approach +
-        '</p></div>' +
-        '<div class="modal__case-item"><h3>Resultaat</h3><p>' +
-        project.result +
-        '</p></div>' +
-        '</div>' +
+        (hasCase
+          ? '<div class="modal__case">' +
+            '<div class="modal__case-item"><h3>Vraag</h3><p>' +
+            project.challenge +
+            '</p></div>' +
+            '<div class="modal__case-item"><h3>Aanpak</h3><p>' +
+            project.approach +
+            '</p></div>' +
+            '<div class="modal__case-item"><h3>Resultaat</h3><p>' +
+            project.result +
+            '</p></div>' +
+            '</div>'
+          : '') +
         '<div class="btn-row modal__cta">' +
         '<a href="contact.html" class="btn btn--primary">Plan een kennismaking</a>' +
         '</div>'

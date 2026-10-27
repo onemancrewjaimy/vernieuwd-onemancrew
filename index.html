@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://onemancrew.nl/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ONEMANCREW | Masters of creative thinking">
+  <meta property="og:title" content="ONEMANCREW | Videoproductie voor werving, onboarding en instructie">
   <meta property="og:description" content="Video die vacatures sneller vult, onboarding verlicht en kennis vasthoudt. Ontdek wat ONEMANCREW voor jouw bedrijf kan maken.">
   <meta property="og:url" content="https://onemancrew.nl/">
   <meta property="og:image" content="https://onemancrew.nl/assets/img/og-image.jpg">
@@ -45,6 +45,7 @@
     "description": "ONEMANCREW maakt wervingsvideo's, info- en instructievideo's en recruitment advertenties voor bedrijven in heel Nederland.",
     "image": "https://onemancrew.nl/assets/img/og-image.jpg",
     "url": "https://onemancrew.nl/",
+    "taxID": "93161301",
     "telephone": "+31628637074",
     "email": "contact@onemancrew.nl",
     "address": {
@@ -70,11 +71,12 @@
 
   <header class="site-header" data-site-header>
     <div class="site-header__inner container">
-      <a href="index.html" class="site-header__logo">ONEMANCREW</a>
+      <a href="/" class="site-header__logo">ONEMANCREW</a>
       <nav class="site-nav" aria-label="Hoofdnavigatie">
         <ul class="site-nav__list">
-          <li><a href="index.html" class="nav__link" aria-current="page">Home</a></li>
-          <li><a href="over-ons.html" class="nav__link">Over ons</a></li>
+          <li><a href="/" class="nav__link" aria-current="page">Home</a></li>
+          <li><a href="#aanbod" class="nav__link">Diensten</a></li>
+          <li><a href="over-ons.html" class="nav__link">Over Jaimy</a></li>
           <li><a href="portfolio.html" class="nav__link">Portfolio</a></li>
           <li><a href="contact.html" class="nav__link">Contact</a></li>
         </ul>
@@ -93,8 +95,9 @@
   <div class="mobile-menu" id="mobileMenu" data-mobile-menu>
     <nav aria-label="Mobiele navigatie">
       <ul class="mobile-menu__list">
-        <li><a href="index.html" class="mobile-menu__link" aria-current="page">Home</a></li>
-        <li><a href="over-ons.html" class="mobile-menu__link">Over ons</a></li>
+        <li><a href="/" class="mobile-menu__link" aria-current="page">Home</a></li>
+        <li><a href="#aanbod" class="mobile-menu__link">Diensten</a></li>
+        <li><a href="over-ons.html" class="mobile-menu__link">Over Jaimy</a></li>
         <li><a href="portfolio.html" class="mobile-menu__link">Portfolio</a></li>
         <li><a href="contact.html" class="mobile-menu__link">Contact</a></li>
       </ul>
@@ -126,17 +129,48 @@
         <span class="timecode" data-live-timecode>00:00:00:00</span>
       </div>
       <div class="container hero__inner">
-        <p class="eyebrow hero__eyebrow">Videoproductie voor bedrijven</p>
-        <h1>Masters of creative thinking.</h1>
-        <p class="hero__subtitle">Vacatures die te lang openstaan en instructies die niemand leest, kosten je tijd en geld. Wij maken video die dat oplost, eenmalig geproduceerd en blijvend inzetbaar.</p>
+        <p class="eyebrow hero__eyebrow">Masters of creative thinking.</p>
+        <h1>Video die vacatures vult, onboarding verlicht en kennis vastlegt.</h1>
+        <p class="hero__subtitle">Vacatures die te lang openstaan en instructies die niemand leest, kosten je tijd en geld. Ik maak video die dat oplost, eenmalig geproduceerd en blijvend inzetbaar.</p>
         <div class="btn-row hero__actions">
-          <a href="contact.html" class="btn btn--primary">Plan een kennismaking</a>
-          <a href="portfolio.html" class="btn btn--secondary btn--on-dark">Bekijk het werk</a>
+          <a href="portfolio.html" class="btn btn--primary">Bekijk het werk</a>
+          <a href="contact.html" class="btn btn--secondary btn--on-dark">Plan een kennismaking</a>
         </div>
       </div>
       <div class="hero__scroll-cue" aria-hidden="true">
         <span>Scroll</span>
         <i data-lucide="chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- LAATSTE WERK -->
+    <section class="section section--dark" aria-labelledby="laatste-werk-heading">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Portfolio</p>
+          <h2 id="laatste-werk-heading">Laatste werk</h2>
+          <p class="lede text-muted">Bekijk eerst het resultaat, lees daarna pas verder.</p>
+        </div>
+        <div class="portfolio-grid" data-reveal-group>
+          <a class="portfolio-card has-frame-reveal glass-light glass--interactive" data-reveal href="portfolio.html#project-05">
+            <span class="portfolio-card__media">
+              <span class="video-placeholder video-placeholder--tinted" aria-hidden="true">
+                <video class="video-placeholder__video" preload="metadata" playsinline muted tabindex="-1">
+                  <source src="assets/video/mileway-onboarding.mp4" type="video/mp4">
+                </video>
+                <span class="video-placeholder__play"><i data-lucide="play"></i></span>
+              </span>
+            </span>
+            <span class="portfolio-card__body">
+              <span class="portfolio-card__category">Onboardingvideo</span>
+              <span class="portfolio-card__client h4">Mileway</span>
+              <span class="portfolio-card__summary">Welkomstvideo voor nieuwe klanten die net zijn begonnen bij Mileway.</span>
+            </span>
+          </a>
+        </div>
+        <div class="btn-row btn-row--center slideshow-more">
+          <a href="portfolio.html" class="btn btn--ghost btn--on-dark">Bekijk al het werk<i data-lucide="arrow-right" class="btn__label-icon" aria-hidden="true"></i></a>
+        </div>
       </div>
     </section>
 
@@ -174,7 +208,7 @@
         <div class="section__head" data-reveal>
           <p class="eyebrow">Het resultaat</p>
           <h2 id="resultaat-heading">Wat video je oplevert</h2>
-          <p class="lede text-muted">Eenmaal gemaakt, eindeloos inzetbaar. Dit is de richting waarin onze klanten typisch resultaat zien.</p>
+          <p class="lede text-muted">Eenmaal gemaakt, eindeloos inzetbaar. Geen garanties, maar de richting die klanten vaak zien na een goede video.</p>
         </div>
         <div class="grid grid--2" data-reveal-group>
           <div class="stat-card glass-light glass--interactive" data-reveal>
@@ -184,7 +218,7 @@
                   <circle class="stat-card__ring-track" cx="60" cy="60" r="52"></circle>
                   <circle class="stat-card__ring-fill" cx="60" cy="60" r="52" data-ring-target="100"></circle>
                 </svg>
-                <span class="stat-card__value"><span data-counter-to="100">0</span><span class="stat-card__unit">%</span></span>
+                <span class="stat-card__value"><span data-counter-to="100">100</span><span class="stat-card__unit">%</span></span>
               </div>
               <p class="stat-card__value-note">betere kandidaten</p>
             </div>
@@ -201,7 +235,7 @@
                   <circle class="stat-card__ring-track" cx="60" cy="60" r="52"></circle>
                   <circle class="stat-card__ring-fill" cx="60" cy="60" r="52" data-ring-target="100"></circle>
                 </svg>
-                <span class="stat-card__value"><span data-counter-to="5.5">0</span></span>
+                <span class="stat-card__value"><span data-counter-to="5.5">5,5</span></span>
               </div>
               <p class="stat-card__value-note">uur per week</p>
             </div>
@@ -218,12 +252,13 @@
                   <circle class="stat-card__ring-track" cx="60" cy="60" r="52"></circle>
                   <circle class="stat-card__ring-fill" cx="60" cy="60" r="52" data-ring-target="75"></circle>
                 </svg>
-                <span class="stat-card__value"><span data-counter-to="75">0</span><span class="stat-card__unit">%</span></span>
+                <span class="stat-card__value"><span data-counter-to="75">75</span><span class="stat-card__unit">%</span></span>
               </div>
+              <p class="stat-card__value-note">van de kennis blijft behouden</p>
             </div>
             <div class="stat-card__body">
               <span class="stat-card__tag">Instructievideo</span>
-              <h3 class="stat-card__label">Van de kennis blijft behouden, ook na verloop</h3>
+              <h3 class="stat-card__label">Minder kennisverlies door personeelsverloop</h3>
               <p class="stat-card__desc">Kennis van vertrekkende medewerkers gaat niet verloren, maar staat vast op video voor iedereen die na hen komt.</p>
             </div>
           </div>
@@ -234,7 +269,7 @@
                   <circle class="stat-card__ring-track" cx="60" cy="60" r="52"></circle>
                   <circle class="stat-card__ring-fill" cx="60" cy="60" r="52" data-ring-target="100"></circle>
                 </svg>
-                <span class="stat-card__value"><span data-counter-to="100">0</span><span class="stat-card__unit">%</span></span>
+                <span class="stat-card__value"><span data-counter-to="100">100</span><span class="stat-card__unit">%</span></span>
               </div>
               <p class="stat-card__value-note">zelfverzekerd starten</p>
             </div>
@@ -255,42 +290,20 @@
           <p class="eyebrow">Investering, geen kostenpost</p>
           <h2 id="investering-heading">Video betaalt zichzelf terug</h2>
           <p>Een goede video kost eenmalig tijd en budget. Daarna werkt hij dag en nacht door: op je website, op LinkedIn, in elke vacaturetekst en bij elke nieuwe medewerker die instructie nodig heeft.</p>
-          <p>Vergelijk dat met keer op keer dezelfde uitleg geven aan elke nieuwe medewerker. Hieronder lees je wat die investering in de praktijk oplevert, in de woorden van klanten die je voorgingen.</p>
+          <p>Vergelijk dat met keer op keer dezelfde uitleg geven aan elke nieuwe medewerker.</p>
           <div class="btn-row">
             <a href="contact.html" class="btn btn--on-gradient">Plan een kennismaking</a>
-          </div>
-        </div>
-        <div class="grid grid--2" data-reveal-group>
-          <div class="testimonial-card glass glass--interactive" data-reveal>
-            <p class="testimonial-card__quote">[Testimonial volgt. Hier komt een reactie van een klant over de tijd die de video hen heeft bespaard.]</p>
-            <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar"><i data-lucide="user"></i></span>
-              <div>
-                <p class="testimonial-card__name">[Naam]</p>
-                <p class="testimonial-card__role">[Functie], [Bedrijf]</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card glass glass--interactive" data-reveal>
-            <p class="testimonial-card__quote">[Testimonial volgt. Hier komt een reactie van een klant over het resultaat dat de video heeft opgeleverd.]</p>
-            <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar"><i data-lucide="user"></i></span>
-              <div>
-                <p class="testimonial-card__name">[Naam]</p>
-                <p class="testimonial-card__role">[Functie], [Bedrijf]</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- AANBOD -->
-    <section class="section section--light section--glass-ambient" aria-labelledby="aanbod-heading">
+    <section id="aanbod" class="section section--light section--glass-ambient" aria-labelledby="aanbod-heading">
       <div class="container">
         <div class="section__head" data-reveal>
           <p class="eyebrow">Wat ONEMANCREW voor je maakt</p>
-          <h2 id="aanbod-heading">Ons aanbod</h2>
+          <h2 id="aanbod-heading">Mijn aanbod</h2>
           <p class="lede text-muted">Drie soorten video, elk met een concreet doel voor je bedrijf.</p>
         </div>
         <div class="grid grid--3" data-reveal-group>
@@ -322,44 +335,14 @@
             <span class="offer-card__icon"><i data-lucide="megaphone"></i></span>
             <h3 class="offer-card__title">Recruitment advertenties</h3>
             <span class="template-flag">Opvallen in de tijdlijn</span>
-            <p class="offer-card__desc">Korte, pakkende video's die gemaakt zijn om te adverteren op social media. Ze trekken in de eerste seconden de aandacht en sturen kandidaten direct naar je vacature.</p>
+            <p class="offer-card__desc">Korte, pakkende advertenties van 15 tot 30 seconden, gemaakt om te adverteren op social media. Geen losse hoofdvideo: de kracht zit in de eerste seconden, die sturen kandidaten direct naar je vacature.</p>
             <ul class="offer-card__list">
-              <li><i data-lucide="check"></i><span>Basisvideo van 2 tot 4 minuten als bron voor al het materiaal</span></li>
-              <li><i data-lucide="check"></i><span>Ongeveer 4 advertentieversies in staand en vierkant formaat</span></li>
+              <li><i data-lucide="check"></i><span>3 tot 5 advertentieversies van 15 tot 30 seconden, staand en vierkant formaat</span></li>
+              <li><i data-lucide="check"></i><span>Opgebouwd om al in de eerste seconden de aandacht te trekken</span></li>
               <li><i data-lucide="check"></i><span>Klaar om te gebruiken op LinkedIn, Instagram en Facebook</span></li>
             </ul>
             <a href="portfolio.html?filter=advertenties" class="btn btn--secondary btn--sm offer-card__cta">Voorbeelden</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- LAATSTE WERK: CARROUSEL -->
-    <section class="section section--dark carousel-section" aria-labelledby="laatste-werk-heading">
-      <div class="carousel-ambient" aria-hidden="true">
-        <span class="carousel-ambient__blob carousel-ambient__blob--a"></span>
-        <span class="carousel-ambient__blob carousel-ambient__blob--b"></span>
-      </div>
-      <div class="container">
-        <div class="section__head" data-reveal>
-          <p class="eyebrow">Portfolio</p>
-          <h2 id="laatste-werk-heading">Laatste werk</h2>
-          <p class="lede text-muted">Een greep uit recent werk. Sleep of klik door de carrousel, of bekijk het volledige portfolio.</p>
-        </div>
-        <div class="carousel" data-slideshow data-reveal tabindex="0" role="group" aria-roledescription="carrousel" aria-label="Laatste projecten">
-          <div class="carousel__stage" data-slideshow-track></div>
-          <p class="sr-only" aria-live="polite" data-slideshow-announcer></p>
-          <div class="carousel__controls">
-            <div class="carousel__progress" data-slideshow-progress></div>
-            <span class="timecode carousel__timecode" data-slideshow-timecode>01 / 01</span>
-            <div class="carousel__arrows">
-              <button type="button" class="carousel__arrow" data-slideshow-prev aria-label="Vorig project"><i data-lucide="chevron-left"></i></button>
-              <button type="button" class="carousel__arrow" data-slideshow-next aria-label="Volgend project"><i data-lucide="chevron-right"></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="btn-row btn-row--center slideshow-more">
-          <a href="portfolio.html" class="btn btn--ghost btn--on-dark">Bekijk al het werk<i data-lucide="arrow-right" class="btn__label-icon" aria-hidden="true"></i></a>
         </div>
       </div>
     </section>
@@ -376,7 +359,7 @@
             <span class="process__node" aria-hidden="true">1</span>
             <span class="process__icon" aria-hidden="true"><i data-lucide="calendar"></i></span>
             <h3 class="process__title">Kennismaking</h3>
-            <p class="process__desc">We bespreken je doel, je doelgroep en de boodschap die moet landen.</p>
+            <p class="process__desc">Ik bespreek je doel, je doelgroep en de boodschap die moet landen.</p>
           </li>
           <li class="process__item glass-light glass--interactive" data-reveal>
             <span class="process__node" aria-hidden="true">2</span>
@@ -400,56 +383,6 @@
       </div>
     </section>
 
-    <!-- VERTROUWEN -->
-    <section class="section section--tint section--glass-ambient" aria-labelledby="vertrouwen-heading">
-      <div class="container">
-        <div class="section__head" data-reveal>
-          <p class="eyebrow">Vertrouwen</p>
-          <h2 id="vertrouwen-heading">Bedrijven die je voorgingen</h2>
-        </div>
-        <div class="logo-row" data-reveal>
-          <div class="logo-placeholder">Klantlogo</div>
-          <div class="logo-placeholder">Klantlogo</div>
-          <div class="logo-placeholder">Klantlogo</div>
-          <div class="logo-placeholder">Klantlogo</div>
-          <div class="logo-placeholder">Klantlogo</div>
-          <div class="logo-placeholder">Klantlogo</div>
-        </div>
-        <div class="grid grid--3" data-reveal-group>
-          <div class="testimonial-card glass-light glass--interactive" data-reveal>
-            <p class="testimonial-card__quote">[Testimonial volgt. Hier komt binnenkort een reactie van een tevreden klant.]</p>
-            <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar"><i data-lucide="user"></i></span>
-              <div>
-                <p class="testimonial-card__name">[Naam]</p>
-                <p class="testimonial-card__role">[Functie], [Bedrijf]</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card glass-light glass--interactive" data-reveal>
-            <p class="testimonial-card__quote">[Testimonial volgt. Hier komt binnenkort een reactie van een tevreden klant.]</p>
-            <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar"><i data-lucide="user"></i></span>
-              <div>
-                <p class="testimonial-card__name">[Naam]</p>
-                <p class="testimonial-card__role">[Functie], [Bedrijf]</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card glass-light glass--interactive" data-reveal>
-            <p class="testimonial-card__quote">[Testimonial volgt. Hier komt binnenkort een reactie van een tevreden klant.]</p>
-            <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar"><i data-lucide="user"></i></span>
-              <div>
-                <p class="testimonial-card__name">[Naam]</p>
-                <p class="testimonial-card__role">[Functie], [Bedrijf]</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- CTA BAND -->
     <section class="section section--gradient cta-band" aria-labelledby="cta-heading">
       <div class="container cta-band__inner">
@@ -467,7 +400,7 @@
     <div class="container">
       <div class="site-footer__grid">
         <div>
-          <a href="index.html" class="site-footer__brand-logo">ONEMANCREW</a>
+          <a href="/" class="site-footer__brand-logo">ONEMANCREW</a>
           <p class="site-footer__slogan">Masters of creative thinking.</p>
           <p class="site-footer__pitch text-muted">Video die vacatures sneller vult, onboarding verlicht en kennis vasthoudt. Eenmalig gemaakt, blijvend inzetbaar.</p>
           <div class="site-footer__social">
@@ -478,8 +411,9 @@
         <div>
           <h2 class="site-footer__heading">Navigatie</h2>
           <ul class="site-footer__list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="over-ons.html">Over ons</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#aanbod">Diensten</a></li>
+            <li><a href="over-ons.html">Over Jaimy</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -494,8 +428,9 @@
         </div>
       </div>
       <div class="site-footer__bottom">
-        <p>KvK [TEMPLATE: KvK-nummer invullen]</p>
+        <p>KvK 93161301</p>
         <p>&copy; <span data-current-year>2026</span> ONEMANCREW. Alle rechten voorbehouden.</p>
+        <p class="site-footer__credit">Deze website is mogelijk gemaakt door <a href="https://brand-on.org" target="_blank" rel="noopener">brand-on.org</a></p>
       </div>
     </div>
   </footer>

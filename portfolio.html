@@ -45,6 +45,7 @@
     "description": "ONEMANCREW maakt wervingsvideo's, info- en instructievideo's en recruitment advertenties voor bedrijven in heel Nederland.",
     "image": "https://onemancrew.nl/assets/img/og-image.jpg",
     "url": "https://onemancrew.nl/",
+    "taxID": "93161301",
     "telephone": "+31628637074",
     "email": "contact@onemancrew.nl",
     "address": {
@@ -70,11 +71,12 @@
 
   <header class="site-header" data-site-header>
     <div class="site-header__inner container">
-      <a href="index.html" class="site-header__logo">ONEMANCREW</a>
+      <a href="/" class="site-header__logo">ONEMANCREW</a>
       <nav class="site-nav" aria-label="Hoofdnavigatie">
         <ul class="site-nav__list">
-          <li><a href="index.html" class="nav__link">Home</a></li>
-          <li><a href="over-ons.html" class="nav__link">Over ons</a></li>
+          <li><a href="/" class="nav__link">Home</a></li>
+          <li><a href="/#aanbod" class="nav__link">Diensten</a></li>
+          <li><a href="over-ons.html" class="nav__link">Over Jaimy</a></li>
           <li><a href="portfolio.html" class="nav__link" aria-current="page">Portfolio</a></li>
           <li><a href="contact.html" class="nav__link">Contact</a></li>
         </ul>
@@ -93,8 +95,9 @@
   <div class="mobile-menu" id="mobileMenu" data-mobile-menu>
     <nav aria-label="Mobiele navigatie">
       <ul class="mobile-menu__list">
-        <li><a href="index.html" class="mobile-menu__link">Home</a></li>
-        <li><a href="over-ons.html" class="mobile-menu__link">Over ons</a></li>
+        <li><a href="/" class="mobile-menu__link">Home</a></li>
+        <li><a href="/#aanbod" class="mobile-menu__link">Diensten</a></li>
+        <li><a href="over-ons.html" class="mobile-menu__link">Over Jaimy</a></li>
         <li><a href="portfolio.html" class="mobile-menu__link" aria-current="page">Portfolio</a></li>
         <li><a href="contact.html" class="mobile-menu__link">Contact</a></li>
       </ul>
@@ -108,7 +111,7 @@
 
   <main id="main-content">
     <!-- PAGE HERO -->
-    <section class="page-hero">
+    <section class="page-hero page-hero--compact">
       <div class="page-hero__media" data-media-fallback>
         <img src="assets/img/bts/bts-04.jpg" alt="" width="1920" height="1080" loading="eager">
       </div>
@@ -116,10 +119,6 @@
       <div class="container page-hero__inner">
         <p class="eyebrow hero__eyebrow">Portfolio</p>
         <h1>Werk dat het verschil laat zien</h1>
-        <p class="page-hero__subtitle">Een overzicht van video's voor werving, instructie en advertenties. Filter op categorie of bekijk alles.</p>
-        <div class="btn-row hero__actions">
-          <a href="contact.html" class="btn btn--secondary btn--on-dark">Plan een kennismaking</a>
-        </div>
       </div>
     </section>
 
@@ -129,7 +128,7 @@
         <div class="section__head" data-reveal>
           <p class="eyebrow">Alle projecten</p>
           <h2 id="portfolio-heading">Bekijk het werk</h2>
-          <p class="lede text-muted">Klik op een project voor de volledige case: de vraag, de aanpak en het resultaat.</p>
+          <p class="lede text-muted">Filter op categorie of bekijk alles. Klik op een project voor meer details.</p>
         </div>
 
         <div class="filter-bar" data-portfolio-filters role="group" aria-label="Filter projecten op categorie" data-reveal>
@@ -139,7 +138,23 @@
           <button type="button" class="filter-btn" data-filter="advertenties" aria-pressed="false">Advertenties</button>
         </div>
 
-        <div class="portfolio-grid" data-portfolio-grid aria-live="polite"></div>
+        <div class="portfolio-grid" data-portfolio-grid aria-live="polite">
+          <button type="button" class="portfolio-card has-frame-reveal glass-light glass--interactive" data-portfolio-card data-category="info" data-portfolio-open="project-05" id="project-05" aria-haspopup="dialog">
+            <span class="portfolio-card__media">
+              <span class="video-placeholder video-placeholder--tinted" aria-hidden="true">
+                <video class="video-placeholder__video" preload="metadata" playsinline muted tabindex="-1">
+                  <source src="assets/video/mileway-onboarding.mp4" type="video/mp4">
+                </video>
+                <span class="video-placeholder__play"><i data-lucide="play"></i></span>
+              </span>
+            </span>
+            <span class="portfolio-card__body">
+              <span class="portfolio-card__category">Onboardingvideo</span>
+              <span class="portfolio-card__client h4">Mileway</span>
+              <span class="portfolio-card__summary">Welkomstvideo voor nieuwe klanten die net zijn begonnen bij Mileway.</span>
+            </span>
+          </button>
+        </div>
 
         <div class="section__head section__head--center portfolio-cta" data-reveal>
           <h2 class="h3">Zo'n resultaat voor jouw bedrijf?</h2>
@@ -163,7 +178,7 @@
     <div class="container">
       <div class="site-footer__grid">
         <div>
-          <a href="index.html" class="site-footer__brand-logo">ONEMANCREW</a>
+          <a href="/" class="site-footer__brand-logo">ONEMANCREW</a>
           <p class="site-footer__slogan">Masters of creative thinking.</p>
           <p class="site-footer__pitch text-muted">Video die vacatures sneller vult, onboarding verlicht en kennis vasthoudt. Eenmalig gemaakt, blijvend inzetbaar.</p>
           <div class="site-footer__social">
@@ -174,8 +189,9 @@
         <div>
           <h2 class="site-footer__heading">Navigatie</h2>
           <ul class="site-footer__list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="over-ons.html">Over ons</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#aanbod">Diensten</a></li>
+            <li><a href="over-ons.html">Over Jaimy</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -190,8 +206,9 @@
         </div>
       </div>
       <div class="site-footer__bottom">
-        <p>KvK [TEMPLATE: KvK-nummer invullen]</p>
+        <p>KvK 93161301</p>
         <p>&copy; <span data-current-year>2026</span> ONEMANCREW. Alle rechten voorbehouden.</p>
+        <p class="site-footer__credit">Deze website is mogelijk gemaakt door <a href="https://brand-on.org" target="_blank" rel="noopener">brand-on.org</a></p>
       </div>
     </div>
   </footer>
