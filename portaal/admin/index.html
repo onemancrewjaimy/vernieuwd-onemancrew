@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beheer | ONEMANCREW Portaal</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../../assets/icons/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/portal.css">
+</head>
+<body>
+  <div class="p-shell">
+    <header class="p-topbar">
+      <span class="p-wordmark" aria-label="ONEMANCREW">
+        <span class="p-wordmark__bold">ONEMAN</span><span class="p-wordmark__light">CREW</span>
+      </span>
+      <div class="p-topbar__actions">
+        <a href="../index.html" class="p-signout">Klantweergave</a>
+        <span class="p-topbar__user" id="userEmail"></span>
+        <button type="button" class="p-signout" id="signOutBtn">Uitloggen</button>
+      </div>
+    </header>
+
+    <main class="p-main">
+      <div class="p-container">
+        <p class="p-label">Beheer</p>
+        <h1 class="p-page-heading">Klanten <span class="p-weight-light">en projecten.</span></h1>
+        <p class="p-admin-summary" id="adminSummary" hidden></p>
+
+        <section class="p-admin-section">
+          <div class="p-admin-section__head">
+            <h2>Projecten</h2>
+            <button type="button" class="p-btn p-btn--ghost" id="toggleProjectForm">Nieuw project</button>
+          </div>
+
+          <form id="projectForm" class="p-admin-form" hidden>
+            <div class="p-field">
+              <label for="pfTitel">Titel</label>
+              <input type="text" id="pfTitel" required>
+            </div>
+            <div class="p-field">
+              <label for="pfType">Type</label>
+              <select id="pfType">
+                <option value="bedrijfsfilm">Bedrijfsfilm</option>
+                <option value="recruitment">Recruitment</option>
+                <option value="aftermovie">Aftermovie</option>
+                <option value="social content">Social content</option>
+                <option value="overig">Overig</option>
+              </select>
+            </div>
+            <div class="p-field">
+              <label for="pfFase">Fase</label>
+              <select id="pfFase">
+                <option value="briefing">Briefing</option>
+                <option value="opname">Opname</option>
+                <option value="montage">Montage</option>
+                <option value="review">Review</option>
+                <option value="oplevering">Oplevering</option>
+              </select>
+            </div>
+            <div class="p-field">
+              <label for="pfStart">Startdatum</label>
+              <input type="date" id="pfStart">
+            </div>
+            <div class="p-field">
+              <label for="pfOplevering">Opleverdatum</label>
+              <input type="date" id="pfOplevering">
+            </div>
+            <div class="p-field">
+              <label>Klant(en)</label>
+              <div id="pfClients" class="p-admin-checklist"></div>
+            </div>
+            <div class="p-feedback-form__row">
+              <button type="submit" class="p-btn p-btn--primary" id="pfSubmit">Project aanmaken</button>
+              <p class="p-login__status" id="pfStatus" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div id="projectLoading" class="p-text-muted p-text-sm">Projecten laden...</div>
+          <ul id="projectList" class="p-admin-list" hidden></ul>
+        </section>
+
+        <section class="p-admin-section">
+          <div class="p-admin-section__head">
+            <h2>Klanten</h2>
+            <button type="button" class="p-btn p-btn--ghost" id="toggleClientForm">Nieuwe klant</button>
+          </div>
+
+          <form id="clientForm" class="p-admin-form" hidden>
+            <div class="p-field">
+              <label for="cfBedrijfsnaam">Bedrijfsnaam</label>
+              <input type="text" id="cfBedrijfsnaam" required>
+            </div>
+            <div class="p-field">
+              <label for="cfContactpersoon">Contactpersoon</label>
+              <input type="text" id="cfContactpersoon">
+            </div>
+            <div class="p-field">
+              <label for="cfEmail">E-mailadres</label>
+              <input type="email" id="cfEmail" required>
+            </div>
+            <div class="p-feedback-form__row">
+              <button type="submit" class="p-btn p-btn--primary" id="cfSubmit">Klant aanmaken en uitnodigen</button>
+              <p class="p-login__status" id="cfStatus" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div id="clientLoading" class="p-text-muted p-text-sm">Klanten laden...</div>
+          <ul id="clientList" class="p-admin-list" hidden></ul>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="p-gradient-bar" aria-hidden="true"></div>
+
+  <script type="module" src="../assets/js/admin-overzicht.js"></script>
+</body>
+</html>

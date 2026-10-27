@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project | ONEMANCREW Portaal</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/portal.css">
+</head>
+<body>
+  <div class="p-shell">
+    <header class="p-topbar">
+      <a class="p-wordmark" aria-label="ONEMANCREW" href="index.html">
+        <span class="p-wordmark__bold">ONEMAN</span><span class="p-wordmark__light">CREW</span>
+      </a>
+      <div class="p-topbar__actions">
+        <span class="p-topbar__user" id="userEmail"></span>
+        <button type="button" class="p-signout" id="signOutBtn">Uitloggen</button>
+      </div>
+    </header>
+
+    <main class="p-main">
+      <div class="p-container">
+        <div id="loadingState" class="p-empty"><p>Project laden…</p></div>
+        <div id="errorState" class="p-empty" hidden><p>Dit project is niet gevonden, of je hebt er geen toegang toe.</p></div>
+
+        <div id="projectContent" hidden>
+          <a class="p-back-link" href="index.html">&larr; Terug naar projecten</a>
+
+          <div class="p-project-header">
+            <p class="p-label" id="projectType"></p>
+            <h1 class="p-page-heading" id="projectTitle"></h1>
+            <p class="p-text-muted p-text-sm" id="projectDates"></p>
+            <div class="p-project-header__actions">
+              <a class="p-btn p-btn--ghost" id="mailJaimyBtn" href="#">Bericht aan Jaimy</a>
+              <button type="button" class="p-btn p-btn--primary" id="approveBtn">Versie goedkeuren</button>
+            </div>
+          </div>
+
+          <ol class="p-phase-bar" id="phaseBar" aria-label="Fase van het project"></ol>
+
+          <div class="p-project-layout">
+            <div class="p-project-main">
+              <div class="p-version-switcher" id="versionSwitcher" role="tablist" aria-label="Versies"></div>
+
+              <div class="p-player p-viewfinder" id="player">
+                <div class="p-player__badge">
+                  <span class="p-rec-dot" aria-hidden="true"></span>
+                  <span id="playerVersionLabel"></span>
+                </div>
+                <div class="p-player__placeholder">
+                  <p>Er is nog geen video voor deze versie.</p>
+                </div>
+                <div class="p-player__frame" id="playerFrame" hidden></div>
+              </div>
+
+              <form id="feedbackForm" class="p-feedback-form">
+                <label for="feedbackText">Feedback</label>
+                <textarea id="feedbackText" class="p-feedback-form__text" required></textarea>
+                <div class="p-feedback-form__row">
+                  <label class="p-feedback-form__timecode-label" for="feedbackTimecode">
+                    Tijdcode
+                    <input type="text" id="feedbackTimecode" class="p-feedback-form__timecode" placeholder="0:00" value="0:00" inputmode="numeric">
+                  </label>
+                  <button type="submit" class="p-btn p-btn--primary" id="feedbackSubmit">Plaatsen</button>
+                  <p class="p-login__status" id="feedbackStatus" role="status" aria-live="polite"></p>
+                </div>
+              </form>
+
+              <ol class="p-feedback-thread" id="feedbackThread" aria-label="Feedback"></ol>
+            </div>
+
+            <aside class="p-sidebar">
+              <section class="p-sidebar__block">
+                <p class="p-label">Deadlines</p>
+                <ol class="p-deadline-list" id="deadlineList"></ol>
+              </section>
+
+              <section class="p-sidebar__block">
+                <p class="p-label">Onze afspraken</p>
+                <div class="p-agreement" id="agreementBlock"></div>
+              </section>
+
+              <section class="p-sidebar__block">
+                <p class="p-label">Bestanden</p>
+                <ul class="p-file-list" id="fileList"></ul>
+              </section>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="p-gradient-bar" aria-hidden="true"></div>
+
+  <script type="module" src="assets/js/project.js"></script>
+</body>
+</html>

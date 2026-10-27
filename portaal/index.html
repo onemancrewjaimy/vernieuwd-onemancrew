@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jouw projecten | ONEMANCREW Portaal</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/portal.css">
+</head>
+<body>
+  <div class="p-shell">
+    <header class="p-topbar">
+      <span class="p-wordmark" aria-label="ONEMANCREW">
+        <span class="p-wordmark__bold">ONEMAN</span><span class="p-wordmark__light">CREW</span>
+      </span>
+      <div class="p-topbar__actions">
+        <span class="p-topbar__user" id="userEmail"></span>
+        <button type="button" class="p-signout" id="signOutBtn">Uitloggen</button>
+      </div>
+    </header>
+
+    <main class="p-main">
+      <div class="p-container">
+        <p class="p-label">Overzicht</p>
+        <h1 class="p-page-heading">Jouw <span class="p-weight-light">projecten.</span></h1>
+
+        <div id="projectGrid" class="p-project-grid" hidden></div>
+        <div id="emptyState" class="p-empty" hidden>
+          <p>Je hebt nog geen projecten. Zodra Jaimy een project voor je aanmaakt, verschijnt het hier.</p>
+        </div>
+        <div id="loadingState" class="p-empty">
+          <p>Projecten laden…</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="p-gradient-bar" aria-hidden="true"></div>
+
+  <script type="module" src="assets/js/projecten.js"></script>
+</body>
+</html>

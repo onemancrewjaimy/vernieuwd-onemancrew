@@ -1,0 +1,28 @@
+# Firebase: .firebaserc en firebase-config.js zijn bewust WEL in git. Dat
+# zijn geen geheimen (de web-apiKey wordt door elke bezoeker toch gezien
+# zodra de pagina laadt), beveiliging loopt via firestore.rules en
+# Firebase Authentication, niet via het verbergen van deze waarden. Wat
+# hieronder wel genegeerd blijft, is echt geheim: service-account-sleutels
+# (volledige adminrechten) en de Bunny-sleutels.
+functions/.env
+functions/.env.*
+functions/.secret.local
+scripts/service-account.json
+*firebase-adminsdk*.json
+.env
+.env.*
+!.env.example
+
+# Node (functions/, scripts/)
+node_modules/
+npm-debug.log*
+
+# Firebase emulator / deploy artefacten
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# OS
+.DS_Store
+Thumbs.db

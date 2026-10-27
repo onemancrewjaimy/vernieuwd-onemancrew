@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project beheren | ONEMANCREW Portaal</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../../assets/icons/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/portal.css">
+</head>
+<body>
+  <div class="p-shell">
+    <header class="p-topbar">
+      <span class="p-wordmark" aria-label="ONEMANCREW">
+        <span class="p-wordmark__bold">ONEMAN</span><span class="p-wordmark__light">CREW</span>
+      </span>
+      <div class="p-topbar__actions">
+        <a href="../index.html" class="p-signout">Klantweergave</a>
+        <span class="p-topbar__user" id="userEmail"></span>
+        <button type="button" class="p-signout" id="signOutBtn">Uitloggen</button>
+      </div>
+    </header>
+
+    <main class="p-main">
+      <div class="p-container">
+        <a href="index.html" class="p-back-link">&larr; Terug naar beheer</a>
+
+        <div id="loadingState" class="p-empty"><p>Project laden...</p></div>
+        <div id="errorState" class="p-empty" hidden><p>Project niet gevonden.</p></div>
+
+        <div id="projectContent" hidden>
+          <p class="p-label" id="projectType"></p>
+          <h1 class="p-page-heading" id="projectTitle"></h1>
+
+          <section class="p-admin-section">
+            <div class="p-admin-section__head"><h2>Fase en afspraken</h2></div>
+            <form id="metaForm" class="p-admin-form">
+              <div class="p-field">
+                <label for="mfFase">Fase</label>
+                <select id="mfFase">
+                  <option value="briefing">Briefing</option>
+                  <option value="opname">Opname</option>
+                  <option value="montage">Montage</option>
+                  <option value="review">Review</option>
+                  <option value="oplevering">Oplevering</option>
+                </select>
+              </div>
+              <div class="p-field">
+                <label for="mfStart">Startdatum</label>
+                <input type="date" id="mfStart">
+              </div>
+              <div class="p-field">
+                <label for="mfOplevering">Opleverdatum</label>
+                <input type="date" id="mfOplevering">
+              </div>
+              <div class="p-field">
+                <label for="mfWatJeKrijgt">Wat je krijgt</label>
+                <input type="text" id="mfWatJeKrijgt">
+              </div>
+              <div class="p-field">
+                <label for="mfFormaten">Formaten</label>
+                <input type="text" id="mfFormaten">
+              </div>
+              <div class="p-field">
+                <label for="mfInvestering">Investering (excl. btw)</label>
+                <input type="text" id="mfInvestering">
+              </div>
+              <div class="p-field">
+                <label for="mfFacturatie">Facturatie</label>
+                <input type="text" id="mfFacturatie">
+              </div>
+              <div class="p-field">
+                <label for="mfGebruik">Gebruik</label>
+                <input type="text" id="mfGebruik">
+              </div>
+              <div class="p-field">
+                <label for="mfPdfUrl">Link naar offerte/voorwaarden (PDF)</label>
+                <input type="url" id="mfPdfUrl" placeholder="https://...">
+              </div>
+              <div class="p-feedback-form__row">
+                <button type="submit" class="p-btn p-btn--primary" id="mfSubmit">Opslaan</button>
+                <p class="p-login__status" id="mfStatus" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+          </section>
+
+          <section class="p-admin-section">
+            <div class="p-admin-section__head"><h2>Versies</h2></div>
+            <form id="versionForm" class="p-admin-form">
+              <div class="p-field">
+                <label for="vfLabel">Label (bijv. V1)</label>
+                <input type="text" id="vfLabel" required>
+              </div>
+              <div class="p-field">
+                <label for="vfBunnyId">Bunny video-GUID</label>
+                <input type="text" id="vfBunnyId" placeholder="Laat leeg zolang er nog geen video is">
+              </div>
+              <div class="p-field">
+                <label for="vfDuur">Duur (seconden)</label>
+                <input type="number" id="vfDuur" min="0">
+              </div>
+              <div class="p-feedback-form__row">
+                <button type="submit" class="p-btn p-btn--primary" id="vfSubmit">Versie toevoegen</button>
+                <p class="p-login__status" id="vfStatus" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+            <ul id="versionList" class="p-admin-list"></ul>
+          </section>
+
+          <section class="p-admin-section">
+            <div class="p-admin-section__head"><h2>Deadlines</h2></div>
+            <form id="deadlineForm" class="p-admin-form">
+              <div class="p-field">
+                <label for="dfTitel">Titel</label>
+                <input type="text" id="dfTitel" required>
+              </div>
+              <div class="p-field">
+                <label for="dfDatum">Datum</label>
+                <input type="date" id="dfDatum" required>
+              </div>
+              <div class="p-field">
+                <label for="dfVerantwoordelijke">Verantwoordelijke</label>
+                <select id="dfVerantwoordelijke">
+                  <option value="jaimy">Jaimy</option>
+                  <option value="klant">Klant</option>
+                </select>
+              </div>
+              <div class="p-feedback-form__row">
+                <button type="submit" class="p-btn p-btn--primary" id="dfSubmit">Deadline toevoegen</button>
+                <p class="p-login__status" id="dfStatus" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+            <ul id="deadlineList" class="p-admin-list"></ul>
+          </section>
+
+          <section class="p-admin-section">
+            <div class="p-admin-section__head"><h2>Bestanden</h2></div>
+            <form id="fileForm" class="p-admin-form">
+              <div class="p-field">
+                <label for="ffNaam">Naam</label>
+                <input type="text" id="ffNaam" required>
+              </div>
+              <div class="p-field">
+                <label for="ffUrl">Link</label>
+                <input type="url" id="ffUrl" required placeholder="https://...">
+              </div>
+              <div class="p-field">
+                <label for="ffType">Type</label>
+                <select id="ffType">
+                  <option value="document">Document (altijd zichtbaar)</option>
+                  <option value="eindbestand">Eindbestand (pas na goedkeuring)</option>
+                </select>
+              </div>
+              <div class="p-field" id="ffZichtbaarWrap" hidden>
+                <label class="p-admin-checklist__item"><input type="checkbox" id="ffZichtbaar"> Nu al zichtbaar voor de klant</label>
+              </div>
+              <div class="p-feedback-form__row">
+                <button type="submit" class="p-btn p-btn--primary" id="ffSubmit">Bestand toevoegen</button>
+                <p class="p-login__status" id="ffStatus" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+            <ul id="fileList" class="p-admin-list"></ul>
+          </section>
+
+          <section class="p-admin-section">
+            <div class="p-admin-section__head"><h2>Feedback</h2></div>
+            <ol id="feedbackThread" class="p-feedback-thread"></ol>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="p-gradient-bar" aria-hidden="true"></div>
+
+  <script type="module" src="../assets/js/admin-project.js"></script>
+</body>
+</html>

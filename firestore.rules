@@ -1,0 +1,118 @@
+rules_version = '2';
+
+/**
+ * ONEMANCREW PORTAAL - Firestore rules
+ *
+ * Principe: standaard alles dicht, admin (custom claim) mag alles, een
+ * klant mag alleen zijn eigen data lezen en nooit afspraken/deadlines/
+ * versies wijzigen, met één uitzondering: een versie goedkeuren (daarvoor
+ * mag een klant alleen de velden approvedAt/approvedBy zetten, verder
+ * niets).
+ *
+ * Stap 1: clients.
+ * Stap 2: projects + versions/feedback(+replies)/deadlines/files.
+ */
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // 'admin' in request.auth.token checkt expliciet of de claim bestaat
+    // voor we 'm vergelijken. Zonder die check faalt "create" (anders dan
+    // "read"/"update") met "Property admin is undefined on object" zodra
+    // een gebruiker zonder de claim een document aanmaakt, zowel in de
+    // emulator als live. Dit is dus geen stijlkeuze maar een vereiste.
+    function isAdmin() {
+      return isSignedIn() && ('admin' in request.auth.token) && request.auth.token.admin == true;
+    }
+
+    // Standaard: alles dicht, tenzij een regel hieronder het expliciet
+    // toestaat.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // clients/{clientId}: een klant mag zijn eigen klantrecord lezen (zijn
+    // uid moet in het uids-veld staan), maar nooit zelf aanmaken of
+    // wijzigen. Dat doet alleen de admin, vanuit /portaal/admin.
+    match /clients/{clientId} {
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid in resource.data.uids);
+      allow write: if isAdmin();
+    }
+
+    // projects/{projectId}: een klant mag een project lezen als zijn uid
+    // in clientIds staat. Alleen de admin maakt/wijzigt/verwijdert een
+    // project (fase, afspraken, data's).
+    match /projects/{projectId} {
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid in resource.data.clientIds);
+      allow write: if isAdmin();
+
+      function hasProjectAccess() {
+        return isAdmin() || (isSignedIn() &&
+          request.auth.uid in get(/databases/$(database)/documents/projects/$(projectId)).data.clientIds);
+      }
+
+      // versions/{versionId}: admin maakt/verwijdert versies. Een klant
+      // mag een versie wel lezen, en mag "goedkeuren", maar dat mag dan
+      // ALLEEN de velden approvedAt en approvedBy zetten en niets anders,
+      // en approvedBy moet zijn eigen uid zijn (geen goedkeuring namens
+      // iemand anders).
+      match /versions/{versionId} {
+        allow read: if hasProjectAccess();
+        allow create, delete: if isAdmin();
+        allow update: if isAdmin() || (
+          hasProjectAccess() &&
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['approvedAt', 'approvedBy']) &&
+          request.resource.data.approvedBy == request.auth.uid
+        );
+      }
+
+      // feedback/{feedbackId}: zowel klant als admin mogen feedback
+      // plaatsen, maar alleen op naam van zichzelf (auteur.uid moet de
+      // eigen uid zijn, en de rol moet overeenkomen met de echte rol, zodat
+      // niemand zich als "admin" kan voordoen). Status wijzigen (verwerkt
+      // markeren) en bewerken/verwijderen is admin-only.
+      match /feedback/{feedbackId} {
+        function auteurIsEcht() {
+          return request.resource.data.auteur.uid == request.auth.uid &&
+            request.resource.data.auteur.rol == (isAdmin() ? 'admin' : 'klant');
+        }
+
+        allow read: if hasProjectAccess();
+        allow create: if hasProjectAccess() && auteurIsEcht();
+        allow update, delete: if isAdmin();
+
+        match /replies/{replyId} {
+          function replyAuteurIsEcht() {
+            return request.resource.data.auteur.uid == request.auth.uid &&
+              request.resource.data.auteur.rol == (isAdmin() ? 'admin' : 'klant');
+          }
+
+          allow read: if hasProjectAccess();
+          allow create: if hasProjectAccess() && replyAuteurIsEcht();
+          allow update, delete: if isAdmin();
+        }
+      }
+
+      // deadlines/{deadlineId}: alleen admin zet/wijzigt deadlines, de
+      // klant mag ze alleen lezen.
+      match /deadlines/{deadlineId} {
+        allow read: if hasProjectAccess();
+        allow write: if isAdmin();
+      }
+
+      // files/{fileId}: documenten (offerte/voorwaarden) zijn altijd
+      // zichtbaar voor wie toegang tot het project heeft. Een eindbestand
+      // is pas zichtbaar als zichtbaarNaGoedkeuring op true staat. Admin
+      // ziet, zoals altijd, alles.
+      match /files/{fileId} {
+        allow read: if hasProjectAccess() && (
+          isAdmin() || resource.data.type == 'document' || resource.data.zichtbaarNaGoedkeuring == true
+        );
+        allow write: if isAdmin();
+      }
+    }
+  }
+}

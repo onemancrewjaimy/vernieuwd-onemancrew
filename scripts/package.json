@@ -1,0 +1,13 @@
+{
+  "name": "onemancrew-portaal-scripts",
+  "private": true,
+  "description": "Eenmalige beheerscripts voor het ONEMANCREW-portaal (Admin SDK). Los van de statische site, hier is npm wel nodig.",
+  "type": "commonjs",
+  "scripts": {
+    "set-admin": "node set-admin.js",
+    "seed-demo": "node seed-demo.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.6.0"
+  }
+}

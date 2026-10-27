@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inloggen | ONEMANCREW Portaal</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/portal.css">
+</head>
+<body>
+  <div class="p-shell">
+    <main class="p-main p-login">
+      <div class="p-login__card p-viewfinder">
+        <div class="p-login__brand">
+          <span class="p-wordmark" aria-label="ONEMANCREW">
+            <span class="p-wordmark__bold">ONEMAN</span><span class="p-wordmark__light">CREW</span>
+          </span>
+          <span class="p-login__tagline">Masters of creative thinking</span>
+        </div>
+
+        <h1 class="p-login__heading">Welkom <span class="p-weight-light">terug.</span></h1>
+
+        <form id="loginForm" novalidate>
+          <div class="p-field">
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" name="email" autocomplete="username" inputmode="email" required>
+          </div>
+          <div class="p-field">
+            <label for="password">Wachtwoord</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" required>
+          </div>
+          <button type="button" class="p-login__forgot" id="forgotBtn">Vergeten?</button>
+          <button type="submit" class="p-btn p-btn--primary p-btn--block p-login__submit" id="submitBtn">Inloggen</button>
+          <p class="p-login__status" id="statusMsg" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="p-login__hint">Nog geen account? Je ontvangt je inlog van Jaimy bij de start van je project.</p>
+      </div>
+    </main>
+
+    <footer class="p-footer">
+      <div class="p-footer__row">
+        <span>KvK 93161301</span>
+        <a href="mailto:contact@onemancrew.nl">contact@onemancrew.nl</a>
+        <a href="tel:+31624623857">+31 6 24623857</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="p-gradient-bar" aria-hidden="true"></div>
+
+  <script type="module" src="assets/js/login.js"></script>
+</body>
+</html>
